@@ -1,0 +1,23 @@
+---
+import TerminalTabs from "./TerminalTabs.astro";
+---
+
+<div class="border border-zinc-700 rounded-md overflow-hidden shadow-lg">
+  <!-- Title bar -->
+  <div class="flex items-center justify-between bg-zinc-800 px-3 py-2 text-xs text-zinc-400">
+    <span>user@portfolio</span>
+    <div class="flex gap-1">
+      <span class="w-3 h-3 rounded-full bg-red-500/50"></span>
+      <span class="w-3 h-3 rounded-full bg-yellow-500/50"></span>
+      <span class="w-3 h-3 rounded-full bg-green-500/50"></span>
+    </div>
+  </div>
+
+  <!-- Tabs -->
+  <TerminalTabs />
+
+  <!-- Content -->
+  <div class="bg-zinc-900 p-6">
+    <slot />
+  </div>
+</div>

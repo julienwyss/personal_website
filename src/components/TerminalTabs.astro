@@ -1,0 +1,30 @@
+---
+const pathname = Astro.url.pathname;
+
+const tabs = [
+  { label: "home", href: "/" },
+  { label: "skills", href: "/skills" },
+  { label: "projects", href: "/projects" },
+];
+---
+
+<div class="flex items-center border-b border-zinc-700 bg-zinc-800">
+  <div class="flex gap-1 px-3 pt-2">
+    {tabs.map((tab) => {
+      const isActive = pathname === tab.href;
+      return (
+        <a
+          href={tab.href}
+          class={`px-4 py-2 text-sm rounded-t-md border
+            ${
+              isActive
+                ? "bg-zinc-900 border-zinc-700 text-zinc-100"
+                : "bg-zinc-800 border-transparent text-zinc-400 hover:text-zinc-200"
+            }`}
+        >
+          {tab.label}
+        </a>
+      );
+    })}
+  </div>
+</div>
