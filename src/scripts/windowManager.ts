@@ -1,4 +1,4 @@
-type AppId = "terminal";
+type AppId = "terminal" | "linkedin";
 
 let zIndex = 10;
 
@@ -14,6 +14,13 @@ const apps: Record<AppId, () => HTMLElement> = {
     const wrapper = document.createElement("div");
     wrapper.innerHTML = `
       ${document.getElementById("terminal-template")?.innerHTML}
+    `;
+    return wrapper.firstElementChild as HTMLElement;
+  },
+  linkedin: () => {
+    const wrapper = document.createElement("div");
+    wrapper.innerHTML = `
+      ${document.getElementById("linkedin-template")?.innerHTML}
     `;
     return wrapper.firstElementChild as HTMLElement;
   },

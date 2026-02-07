@@ -2,6 +2,7 @@
 import Taskbar from "./Taskbar.astro";
 import AppWindow from "./AppWindow.astro";
 import TerminalApp from "../apps/TerminalApp.astro";
+import LinkedInApp from "../apps/LinkedInApp.astro";
 ---
 
 <div id="desktop" class="fixed inset-0 bg-zinc-900 overflow-hidden font-mono">
@@ -12,6 +13,11 @@ import TerminalApp from "../apps/TerminalApp.astro";
   <div id="terminal-template" class="hidden">
     <AppWindow title="Terminal" appId="terminal">
       <TerminalApp />
+    </AppWindow>
+  </div>
+  <div id="linkedin-template" class="hidden">
+    <AppWindow title="LinkedIn" appId="linkedin">
+      <LinkedInApp />
     </AppWindow>
   </div>
 </div>
