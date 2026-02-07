@@ -12,7 +12,7 @@ const tabs = [
       tabs.map((tab, index) => (
         <button
           data-tab={tab.id}
-          class={`tab-button px-4 py-2 text-sm rounded-t-md border transition-colors
+          class={`tab-button px-4 py-2 text-sm rounded-t-md border transition-colors cursor-pointer
           ${
             index === 0
               ? "bg-zinc-900 border-zinc-700 text-zinc-100 tab-active"
