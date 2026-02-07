@@ -1,0 +1,46 @@
+{
+  "home": [
+    {
+      "type": "command",
+      "prompt": "user@portfolio:~$ ",
+      "promptColor": "text-cyan-400",
+      "text": "cat about.txt",
+      "textColor": "text-green-400"
+    },
+    {
+      "type": "output",
+      "text": "Willkommen zu meinem Portfolio",
+      "textColor": "text-zinc-300"
+    },
+    {
+      "type": "cursor",
+      "prompt": "user@portfolio:~$ ",
+      "promptColor": "text-cyan-400",
+      "text": "",
+      "textColor": "text-green-400",
+      "keepCursor": true
+    }
+  ],
+  "skills": [
+    {
+      "type": "command",
+      "prompt": "user@portfolio:~$ ",
+      "promptColor": "text-cyan-400",
+      "text": "ls skills -la",
+      "textColor": "text-green-400"
+    },
+    {
+      "type": "output",
+      "text": "skills",
+      "textColor": "text-cyan-400"
+    },
+    {
+      "type": "cursor",
+      "prompt": "user@portfolio:~$ ",
+      "promptColor": "text-cyan-400",
+      "text": "",
+      "textColor": "text-green-400",
+      "keepCursor": true
+    }
+  ]
+}

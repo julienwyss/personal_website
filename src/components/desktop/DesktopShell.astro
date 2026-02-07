@@ -1,0 +1,19 @@
+---
+import Taskbar from "./Taskbar.astro";
+import AppWindow from "./AppWindow.astro";
+import TerminalApp from "../apps/TerminalApp.astro";
+---
+
+<div id="desktop" class="fixed inset-0 bg-zinc-900 overflow-hidden font-mono">
+  <div id="window-layer" class="absolute inset-0"></div>
+
+  <Taskbar />
+
+  <div id="terminal-template" class="hidden">
+    <AppWindow title="Terminal" appId="terminal">
+      <TerminalApp />
+    </AppWindow>
+  </div>
+</div>
+
+<script src="../../scripts/windowManager.ts"></script>

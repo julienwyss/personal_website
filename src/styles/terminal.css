@@ -1,0 +1,32 @@
+.terminal-line {
+  opacity: 0;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+.terminal-line.typing {
+  opacity: 1;
+}
+
+.terminal-typewriter {
+  display: inline-block;
+}
+
+.terminal-cursor {
+  display: inline-block;
+  background-color: #10b981;
+  width: 8px;
+  height: 1em;
+  margin-left: 2px;
+  vertical-align: middle;
+  animation: blink 1s infinite;
+}
+
+.terminal-cursor.hidden {
+  opacity: 0 !important;
+  display: none !important;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}

@@ -1,0 +1,30 @@
+---
+import TerminalTabs from "../utils/TerminalTabs.astro";
+import terminalContent from "../../data/TerminalContent.json";
+---
+
+<div class="flex flex-col h-full">
+  <TerminalTabs />
+
+  <div class="bg-zinc-900 p-6 flex-1 overflow-auto text-sm font-mono">
+    {Object.entries(terminalContent).map(([tabId, lines], tabIndex) => (
+      <div 
+        class={`tab-content ${tabIndex === 0 ? '' : 'hidden'}`} 
+        data-tab-content={tabId}
+      >
+        {lines.map((line) => (
+          <div 
+            class="terminal-line"
+            data-prompt={line.prompt || ''}
+            data-prompt-color={line.promptColor || 'text-zinc-400'}
+            data-text={line.text}
+            data-text-color={line.textColor || 'text-zinc-400'}
+            data-keep-cursor={line.keepCursor ? 'true' : 'false'}
+          ></div>
+        ))}
+      </div>
+    ))}
+  </div>
+</div>
+
+<script src="../../scripts/TerminalApp.ts"></script>
