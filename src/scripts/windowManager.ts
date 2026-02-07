@@ -192,3 +192,7 @@ function enableResize(win: HTMLElement) {
     });
   });
 }
+
+import('flowbite').then(({ initFlowbite }) => {
+  initFlowbite();
+});

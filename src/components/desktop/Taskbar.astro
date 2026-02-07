@@ -1,11 +1,33 @@
+---
+import ToolTips from '../utils/ToolTips.astro';
+---
+
+
 <div
   class="absolute left-0 top-0 h-full w-14 bg-zinc-800 border-l border-zinc-700 flex flex-col items-center py-4 gap-4"
 >
   <button
+    data-tooltip-target="tooltip-profile-picture"
+    data-tooltip-placement="right"
+    class="w-10 h-10 rounded-md bg-zinc-700 hover:bg-zinc-600 text-zinc-200 flex items-center justify-center"
+    title="ProfilePicture"
+  >
+    <img
+      src="/ProfilePicture.jpg"
+      alt="Profile Picture"
+      class="w-full h-full object-cover rounded-md">
+  </button>
+  <button
+    data-tooltip-target="tooltip-terminal"
+    data-tooltip-placement="right"
+    type="button"
     class="w-10 h-10 rounded-md bg-zinc-700 hover:bg-zinc-600 text-zinc-200 flex items-center justify-center cursor-pointer"
     onclick="window.openApp('terminal')"
-    title="Terminal"
   >
     >_
   </button>
+  
+  
+  
+  <ToolTips />
 </div>
