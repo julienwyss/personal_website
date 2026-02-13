@@ -1,0 +1,170 @@
+---
+const username = "julienwyss";
+
+let profile = null;
+let repos = null;
+let apiError = null;
+let languageStats: { [key: string]: number } = {};
+let sortedLanguages: [string, number][] = [];
+let joinedYear = null;
+
+try {
+  const profileRes = await fetch(
+    `https://api.github.com/users/${username}`
+  );
+  profile = await profileRes.json();
+
+  if (profile.message) {
+    throw new Error(profile.message);
+  }
+
+  const reposRes = await fetch(
+    `https://api.github.com/users/${username}/repos?sort=updated`
+  );
+  repos = await reposRes.json();
+
+  if (!Array.isArray(repos)) {
+    throw new Error(repos.message || 'GitHub API returned invalid data');
+  }
+
+  for (const repo of repos) {
+    if (!repo.language) continue;
+
+    if (!languageStats[repo.language]) {
+      languageStats[repo.language] = 0;
+    }
+
+    languageStats[repo.language]++;
+  }
+
+  sortedLanguages = Object.entries(languageStats)
+    .sort((a, b) => b[1] - a[1]);
+
+  joinedYear = new Date(profile.created_at).getFullYear();
+} catch (error) {
+  apiError = (error as Error).message;
+  console.error('GitHub API Error:', error);
+}
+---
+
+<div class="h-full overflow-y-auto bg-zinc-900 text-zinc-200 p-6">
+
+{apiError ? (
+  <!-- Error State -->
+  <div class="h-full flex items-center justify-center">
+    <div class="text-center">
+      <div class="text-6xl mb-4">⚠️</div>
+      <h2 class="text-xl font-bold mb-2">GitHub API Fehler</h2>
+      <p class="text-zinc-400 mb-4">
+        {apiError.includes('rate limit') 
+          ? 'Rate limit erreicht. Versuche es später nochmal.'
+          : `Fehler: ${apiError}`
+        }
+      </p>
+      <p class="text-zinc-500 text-sm">
+        Die GitHub API ist momentan nicht verfügbar.
+      </p>
+    </div>
+  </div>
+) : (
+  <>
+  <!-- Header -->
+  <div class="flex items-center gap-6">
+    <img
+      src={profile.avatar_url}
+      class="w-24 h-24 rounded-full border border-zinc-700"
+    />
+
+    <div>
+      <h2 class="text-xl font-bold">{profile.login}</h2>
+      <p class="text-zinc-400 text-sm">
+        Member since {joinedYear}
+      </p>
+
+      <a
+        href={profile.html_url}
+        target="_blank"
+        class="text-cyan-400 text-sm hover:underline"
+      >
+        Open on GitHub →
+      </a>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="mt-6 flex gap-8 text-sm">
+    <div>
+      <span class="text-zinc-400">Repos</span>
+      <div class="text-lg font-semibold">{profile.public_repos}</div>
+    </div>
+
+    <div>
+      <span class="text-zinc-400">Followers</span>
+      <div class="text-lg font-semibold">{profile.followers}</div>
+    </div>
+  </div>
+
+  <!-- Repositories -->
+  <div class="mt-10">
+    <h3 class="text-sm uppercase text-zinc-500 tracking-wider mb-4">
+      Repositories
+    </h3>
+
+    {repos.map((repo: any) => (
+      <div class="mb-5 pb-4 border-b border-zinc-800">
+        <a
+          href={repo.html_url}
+          target="_blank"
+          class="text-cyan-400 font-semibold text-base"
+        >
+          {repo.name}
+        </a>
+
+        {repo.description && (
+          <p class="text-sm text-zinc-400 mt-1">
+            {repo.description}
+          </p>
+        )}
+
+        <div class="flex gap-6 text-xs text-zinc-500 mt-2">
+          {repo.language && <span>{repo.language}</span>}
+          <span>★ {repo.stargazers_count}</span>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <!-- Language Statistik -->
+  {sortedLanguages.length > 0 && (
+    <div class="mt-10">
+      <h3 class="text-sm uppercase text-zinc-500 tracking-wider mb-4">
+        Languages
+      </h3>
+
+      <div class="space-y-3">
+        {sortedLanguages.map(([lang, count]: [string, number]) => {
+          const percent = (count / repos.length) * 100;
+
+          return (
+            <div>
+              <div class="flex justify-between text-sm">
+                <span>{lang}</span>
+                <span class="text-zinc-400">{count}</span>
+              </div>
+
+              <div class="bg-zinc-800 h-2 rounded mt-1">
+                <div
+                  class="bg-cyan-500 h-2 rounded"
+                  style={`width: ${percent}%`}
+                />
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  )}
+  </>
+)}
+
+</div>

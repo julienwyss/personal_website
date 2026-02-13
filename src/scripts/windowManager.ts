@@ -1,4 +1,4 @@
-type AppId = "terminal" | "linkedin";
+type AppId = "terminal" | "linkedin" | "github";
 
 let zIndex = 10;
 
@@ -24,6 +24,13 @@ const apps: Record<AppId, () => HTMLElement> = {
     `;
     return wrapper.firstElementChild as HTMLElement;
   },
+  github: () => {
+    const wrapper = document.createElement("div");
+    wrapper.innerHTML = `
+      ${document.getElementById("github-template")?.innerHTML}
+    `;
+    return wrapper.firstElementChild as HTMLElement;
+  },
 };
 
 (window as any).openApp = (appId: AppId) => {
@@ -44,8 +51,30 @@ const apps: Record<AppId, () => HTMLElement> = {
     app_open_count = 0;
   }
 
-  enableWindowControls(win);
   windowLayer.appendChild(win);
+  if (appId === 'linkedin') {
+      const container = win.querySelector('.linkedin-container');
+      if (container) {
+        const badge = document.createElement('div');
+        badge.className = 'badge-base LI-profile-badge';
+        badge.setAttribute('data-locale', 'de_DE');
+        badge.setAttribute('data-size', 'large');
+        badge.setAttribute('data-theme', 'dark');
+        badge.setAttribute('data-type', 'HORIZONTAL');
+        badge.setAttribute('data-vanity', 'julien-wyss-39004028b');
+        badge.setAttribute('data-version', 'v1');
+        
+        badge.style.display = 'block';
+        badge.style.margin = '0 auto';
+        
+        container.appendChild(badge);
+        
+        if ((window as any).LIRenderAll) {
+          (window as any).LIRenderAll();
+        }
+      }
+    }
+  enableWindowControls(win);
 };
 
 function enableWindowControls(win: HTMLElement) {
