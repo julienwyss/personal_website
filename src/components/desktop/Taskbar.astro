@@ -35,7 +35,17 @@ import ToolTips from '../utils/ToolTips.astro';
     class="w-10 h-10 rounded-md bg-zinc-700 hover:bg-zinc-600 text-zinc-200 flex items-center justify-center cursor-pointer"
     onclick="window.openApp('linkedin')"
   >
-    >_
+    <img src={`${import.meta.env.BASE_URL}linkedin-logo-white.png`} alt="LinkedIn Logo" class="w-full h-full object-cover rounded-md">
+  </button>
+
+  <button
+    data-tooltip-target="tooltip-github"
+    data-tooltip-placement="right"
+    type="button"
+    class="w-10 h-10 rounded-md bg-zinc-700 hover:bg-zinc-600 text-zinc-200 flex items-center justify-center cursor-pointer"
+    onclick="window.openApp('github')"
+  >
+    <img src={`${import.meta.env.BASE_URL}github-logo-inverted.svg`} alt="GitHub Logo" class="w-full h-full object-cover rounded-md">
   </button>
   
   
