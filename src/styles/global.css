@@ -1,3 +1,31 @@
 @import "tailwindcss";
 @import "flowbite";
 @import "./terminal.css";
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #27272a;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #52525b;
+  border-radius: 4px;
+  border: 1px solid #3f3f46;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #71717a;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: #a1a1aa;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #52525b #27272a;
+}
