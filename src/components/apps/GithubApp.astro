@@ -53,7 +53,9 @@ try {
   <!-- Error State -->
   <div class="h-full flex items-center justify-center">
     <div class="text-center">
-      <div class="text-6xl mb-4">⚠️</div>
+      <div class="text-6xl mb-4">
+        <img src={`${import.meta.env.BASE_URL}warning-symbol.svg`} alt="Warning Symbol" class="w-16 h-16 mx-auto mb-4">
+      </div>
       <h2 class="text-xl font-bold mb-2">GitHub API Fehler</h2>
       <p class="text-zinc-400 mb-4">
         {apiError.includes('rate limit') 
