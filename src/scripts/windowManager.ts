@@ -1,11 +1,9 @@
 type AppId = "terminal" | "linkedin" | "github";
 
 let zIndex = 10;
-
 const app_open_start_left = 100;
 const app_open_start_top = 100;
 const app_offset = 30;
-let app_open_count = 0;
 
 const windowLayer = document.getElementById("window-layer")!;
 
@@ -39,41 +37,67 @@ const apps: Record<AppId, () => HTMLElement> = {
 
   const win = app();
 
-  const leftPos = app_open_start_left + app_offset * app_open_count;
-  const topPos = app_open_start_top + app_offset * app_open_count;
+  const existingWindows = document.querySelectorAll('.app-window');
+
+  let attempt = 0;
+  let leftPos = 0;
+  let topPos = 0;
+
+  while (true) {
+    leftPos = app_open_start_left + (attempt * app_offset);
+    topPos = app_open_start_top + (attempt * app_offset);
+
+    if (leftPos > window.innerWidth - 200 || topPos > window.innerHeight - 200) {
+      leftPos = app_open_start_left + 40;
+      topPos = app_open_start_top + 40;
+      break;
+    }
+
+    let occupied = false;
+    existingWindows.forEach((w: Element) => {
+      const el = w as HTMLElement;
+      const wLeft = parseInt(el.style.left || '0');
+      const wTop = parseInt(el.style.top || '0');
+
+      if (Math.abs(wLeft - leftPos) < 15 && Math.abs(wTop - topPos) < 15) {
+        occupied = true;
+      }
+    });
+
+    if (!occupied) {
+      break;
+    }
+
+    attempt++;
+  }
 
   win.style.left = `${leftPos}px`;
   win.style.top = `${topPos}px`;
   win.style.zIndex = String(zIndex++);
 
-  app_open_count++;
-  if (leftPos > window.innerWidth - 400 || topPos > window.innerHeight - 300) {
-    app_open_count = 0;
-  }
-
   windowLayer.appendChild(win);
   if (appId === 'linkedin') {
-      const container = win.querySelector('.linkedin-container');
-      if (container) {
-        const badge = document.createElement('div');
-        badge.className = 'badge-base LI-profile-badge';
-        badge.setAttribute('data-locale', 'de_DE');
-        badge.setAttribute('data-size', 'large');
-        badge.setAttribute('data-theme', 'dark');
-        badge.setAttribute('data-type', 'HORIZONTAL');
-        badge.setAttribute('data-vanity', 'julien-wyss-39004028b');
-        badge.setAttribute('data-version', 'v1');
-        
-        badge.style.display = 'block';
-        badge.style.margin = '0 auto';
-        
-        container.appendChild(badge);
-        
-        if ((window as any).LIRenderAll) {
-          (window as any).LIRenderAll();
-        }
+    const container = win.querySelector('.linkedin-container');
+    if (container) {
+      const badge = document.createElement('div');
+      badge.className = 'badge-base LI-profile-badge';
+      badge.setAttribute('data-locale', 'de_DE');
+      badge.setAttribute('data-size', 'large');
+      badge.setAttribute('data-theme', 'dark');
+      badge.setAttribute('data-type', 'HORIZONTAL');
+      badge.setAttribute('data-vanity', 'julien-wyss-39004028b');
+      badge.setAttribute('data-version', 'v1');
+
+      badge.style.display = 'block';
+      badge.style.margin = '0 auto';
+
+      container.appendChild(badge);
+
+      if ((window as any).LIRenderAll) {
+        (window as any).LIRenderAll();
       }
     }
+  }
   enableWindowControls(win);
 };
 
