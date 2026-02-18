@@ -126,11 +126,12 @@ export async function initWriteupViewer(container: HTMLElement, filePath: string
     }
 
     const cleanPath = filePath.replace(/\\/g, '/');
+    const encodePath = (p: string) => p.split('/').map(encodeURIComponent).join('/');
     const fileName = cleanPath.split('/').pop();
     titleSpan.textContent = fileName || 'Unknown File';
 
     try {
-        const fileUrl = `${import.meta.env.BASE_URL}writeups/${cleanPath}`;
+        const fileUrl = `${import.meta.env.BASE_URL}writeups/${encodePath(cleanPath)}`;
         const res = await fetch(fileUrl);
         if (!res.ok) throw new Error(`File not found: ${fileUrl}`);
 
@@ -146,7 +147,7 @@ export async function initWriteupViewer(container: HTMLElement, filePath: string
                 return `<img src="${href}" alt="${text}" title="${title || ''}" class="cursor-zoom-in rounded shadow-lg my-4 max-w-full" onclick="window.openApp('image-viewer', '${href}')">`;
             }
             const relPath = `${folderPath}/${href}`;
-            const fullImgPath = `${import.meta.env.BASE_URL}writeups/${relPath}`;
+            const fullImgPath = `${import.meta.env.BASE_URL}writeups/${encodePath(relPath)}`;
             return `<img src="${fullImgPath}" alt="${text}" title="${title || ''}" class="cursor-zoom-in rounded shadow-lg my-4 max-w-full" onclick="window.openApp('image-viewer', '${relPath}')">`;
         };
 
@@ -182,4 +183,38 @@ export async function initWriteupViewer(container: HTMLElement, filePath: string
             <p>${e.message}</p>
         </div>`;
     }
+}
+
+export function initImageViewer(container: HTMLElement, filePath: string) {
+    const titleEl = container.querySelector('#image-viewer-title') as HTMLElement;
+    const contentEl = container.querySelector('#image-viewer-content') as HTMLElement;
+    const cleanPath = filePath.replace(/\\/g, '/');
+    const encodePath = (p: string) => p.split('/').map(encodeURIComponent).join('/');
+    const fileName = cleanPath.split('/').pop() || '';
+    titleEl.textContent = fileName;
+    const imgUrl = cleanPath.startsWith('http') || cleanPath.startsWith('//')
+        ? cleanPath
+        : `${import.meta.env.BASE_URL}writeups/${encodePath(cleanPath)}`;
+
+    const img = document.createElement('img');
+    img.src = imgUrl;
+    img.alt = fileName;
+    img.className = 'max-w-full max-h-full object-contain rounded shadow-lg cursor-zoom-in transition-all duration-200';
+
+    let zoomed = false;
+    img.addEventListener('click', () => {
+        zoomed = !zoomed;
+        if (zoomed) {
+            img.className = 'rounded shadow-lg cursor-zoom-out';
+            img.style.maxWidth = 'none';
+            img.style.maxHeight = 'none';
+        } else {
+            img.className = 'max-w-full max-h-full object-contain rounded shadow-lg cursor-zoom-in transition-all duration-200';
+            img.style.maxWidth = '';
+            img.style.maxHeight = '';
+        }
+    });
+
+    contentEl.innerHTML = '';
+    contentEl.appendChild(img);
 }

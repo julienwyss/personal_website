@@ -2,6 +2,7 @@ type AppId = "terminal" | "linkedin" | "github" | "contact" | "explorer" | "writ
 import { initContactApp } from './ContactApp';
 import { initExplorer } from './WriteUpApp';
 import { initWriteupViewer } from './WriteUpApp';
+import { initImageViewer } from './WriteUpApp';
 
 let zIndex = 10;
 const app_open_start_left = 100;
@@ -137,36 +138,7 @@ const apps: Record<AppId, () => HTMLElement> = {
     initWriteupViewer(win, args);
   }
   if (appId === 'image-viewer') {
-    const titleEl = win.querySelector('#image-viewer-title') as HTMLElement;
-    const contentEl = win.querySelector('#image-viewer-content') as HTMLElement;
-    const cleanPath = (args as string).replace(/\\/g, '/');
-    const fileName = cleanPath.split('/').pop() || '';
-    titleEl.textContent = fileName;
-    const imgUrl = cleanPath.startsWith('http') || cleanPath.startsWith('//')
-      ? cleanPath
-      : `${import.meta.env.BASE_URL}writeups/${cleanPath}`;
-
-    const img = document.createElement('img');
-    img.src = imgUrl;
-    img.alt = fileName;
-    img.className = 'max-w-full max-h-full object-contain rounded shadow-lg cursor-zoom-in transition-all duration-200';
-
-    let zoomed = false;
-    img.addEventListener('click', () => {
-      zoomed = !zoomed;
-      if (zoomed) {
-        img.className = 'rounded shadow-lg cursor-zoom-out';
-        img.style.maxWidth = 'none';
-        img.style.maxHeight = 'none';
-      } else {
-        img.className = 'max-w-full max-h-full object-contain rounded shadow-lg cursor-zoom-in transition-all duration-200';
-        img.style.maxWidth = '';
-        img.style.maxHeight = '';
-      }
-    });
-
-    contentEl.innerHTML = '';
-    contentEl.appendChild(img);
+    initImageViewer(win, args);
   }
   enableWindowControls(win);
 };
