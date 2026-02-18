@@ -13,14 +13,22 @@ import terminalContent from "../../data/TerminalContent.json";
         data-tab-content={tabId}
       >
         {lines.map((line) => (
-          <div 
-            class="terminal-line"
-            data-prompt={line.prompt || ''}
-            data-prompt-color={line.promptColor || 'text-zinc-400'}
-            data-text={line.text}
-            data-text-color={line.textColor || 'text-zinc-400'}
-            data-keep-cursor={line.keepCursor ? 'true' : 'false'}
-          ></div>
+          line.type === 'progressBar' ? (
+            <div 
+              class="terminal-progress-bar"
+              data-skill={(line as any).skill}
+              data-level={(line as any).level}
+            ></div>
+          ) : (
+            <div 
+              class="terminal-line"
+              data-prompt={line.prompt || ''}
+              data-prompt-color={line.promptColor || 'text-zinc-400'}
+              data-text={line.text}
+              data-text-color={line.textColor || 'text-zinc-400'}
+              data-keep-cursor={line.keepCursor ? 'true' : 'false'}
+            ></div>
+          )
         ))}
       </div>
     ))}

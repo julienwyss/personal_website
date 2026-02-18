@@ -39,13 +39,63 @@
       "type": "command",
       "prompt": "user@portfolio:~$ ",
       "promptColor": "text-cyan-400",
-      "text": "ls skills -la",
+      "text": "./skills.sh",
       "textColor": "text-green-400"
     },
     {
       "type": "output",
-      "text": "skills",
-      "textColor": "text-cyan-400"
+      "text": "Loading skill proficiency levels...",
+      "textColor": "text-zinc-400"
+    },
+    {
+      "type": "progressBar",
+      "skill": "Java",
+      "level": 4
+    },
+    {
+      "type": "progressBar",
+      "skill": "PHP",
+      "level": 4
+    },
+    {
+      "type": "progressBar",
+      "skill": "Python",
+      "level": 3
+    },
+    {
+      "type": "progressBar",
+      "skill": "JavaScript",
+      "level": 3
+    },
+    {
+      "type": "progressBar",
+      "skill": "HTML/CSS",
+      "level": 3
+    },
+    {
+      "type": "progressBar",
+      "skill": "SQL",
+      "level": 3
+    },
+    {
+      "type": "progressBar",
+      "skill": "C",
+      "level": 2
+    },
+    {
+      "type": "progressBar",
+      "skill": "C#",
+      "level": 2
+    },
+    {
+      "type": "progressBar",
+      "skill": "Kotlin",
+      "level": 2
+    },
+    {
+      "type": "progressBar",
+      "skill": "Assembly",
+      "level": 1
     },
     {
       "type": "cursor",
