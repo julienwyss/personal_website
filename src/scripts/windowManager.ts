@@ -1,5 +1,7 @@
-type AppId = "terminal" | "linkedin" | "github" | "contact";
+type AppId = "terminal" | "linkedin" | "github" | "contact" | "explorer" | "writeup-viewer" | "image-viewer";
 import { initContactApp } from './ContactApp';
+import { initExplorer } from './WriteUpApp';
+import { initWriteupViewer } from './WriteUpApp';
 
 let zIndex = 10;
 const app_open_start_left = 100;
@@ -37,9 +39,24 @@ const apps: Record<AppId, () => HTMLElement> = {
     `;
     return wrapper.firstElementChild as HTMLElement;
   },
+  explorer: () => {
+    const wrapper = document.createElement("div");
+    wrapper.innerHTML = document.getElementById("explorer-template")?.innerHTML || "";
+    return wrapper.firstElementChild as HTMLElement;
+  },
+  "writeup-viewer": () => {
+    const wrapper = document.createElement("div");
+    wrapper.innerHTML = document.getElementById("viewer-template")?.innerHTML || "";
+    return wrapper.firstElementChild as HTMLElement;
+  },
+  "image-viewer": () => {
+    const wrapper = document.createElement("div");
+    wrapper.innerHTML = document.getElementById("image-viewer-template")?.innerHTML || "";
+    return wrapper.firstElementChild as HTMLElement;
+  },
 };
 
-(window as any).openApp = (appId: AppId) => {
+(window as any).openApp = (appId: AppId, args?: any) => {
   const app = apps[appId];
   if (!app) return;
 
@@ -112,6 +129,45 @@ const apps: Record<AppId, () => HTMLElement> = {
     }
   }
 
+  if (appId === 'explorer') {
+    initExplorer(win, args);
+  }
+
+  if (appId === 'writeup-viewer') {
+    initWriteupViewer(win, args);
+  }
+  if (appId === 'image-viewer') {
+    const titleEl = win.querySelector('#image-viewer-title') as HTMLElement;
+    const contentEl = win.querySelector('#image-viewer-content') as HTMLElement;
+    const cleanPath = (args as string).replace(/\\/g, '/');
+    const fileName = cleanPath.split('/').pop() || '';
+    titleEl.textContent = fileName;
+    const imgUrl = cleanPath.startsWith('http') || cleanPath.startsWith('//')
+      ? cleanPath
+      : `${import.meta.env.BASE_URL}writeups/${cleanPath}`;
+
+    const img = document.createElement('img');
+    img.src = imgUrl;
+    img.alt = fileName;
+    img.className = 'max-w-full max-h-full object-contain rounded shadow-lg cursor-zoom-in transition-all duration-200';
+
+    let zoomed = false;
+    img.addEventListener('click', () => {
+      zoomed = !zoomed;
+      if (zoomed) {
+        img.className = 'rounded shadow-lg cursor-zoom-out';
+        img.style.maxWidth = 'none';
+        img.style.maxHeight = 'none';
+      } else {
+        img.className = 'max-w-full max-h-full object-contain rounded shadow-lg cursor-zoom-in transition-all duration-200';
+        img.style.maxWidth = '';
+        img.style.maxHeight = '';
+      }
+    });
+
+    contentEl.innerHTML = '';
+    contentEl.appendChild(img);
+  }
   enableWindowControls(win);
 };
 

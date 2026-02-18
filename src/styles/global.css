@@ -29,3 +29,12 @@
   scrollbar-width: thin;
   scrollbar-color: #52525b #27272a;
 }
+
+.markdown-body {
+  background-color: transparent !important;
+}
+
+.markdown-body pre {
+  background-color: #161b22 !important;
+  border: none !important;
+}

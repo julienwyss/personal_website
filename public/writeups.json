@@ -1,0 +1,687 @@
+[
+  {
+    "name": "Break The Syntax",
+    "type": "directory",
+    "path": "Break The Syntax",
+    "children": [
+      {
+        "name": "Forensics",
+        "type": "directory",
+        "path": "Break The Syntax\\Forensics",
+        "children": [
+          {
+            "name": "Chiroptera_Timida.md",
+            "type": "file",
+            "path": "Break The Syntax\\Forensics\\Chiroptera_Timida.md",
+            "extension": ".md",
+            "size": 1108
+          },
+          {
+            "name": "copypasta.md",
+            "type": "file",
+            "path": "Break The Syntax\\Forensics\\copypasta.md",
+            "extension": ".md",
+            "size": 2209
+          },
+          {
+            "name": "images",
+            "type": "directory",
+            "path": "Break The Syntax\\Forensics\\images",
+            "children": [
+              {
+                "name": "Recovered_File_Demo_Sus_datafix.png",
+                "type": "file",
+                "path": "Break The Syntax\\Forensics\\images\\Recovered_File_Demo_Sus_datafix.png",
+                "extension": ".png",
+                "size": 371959
+              },
+              {
+                "name": "Screenshot_220.png",
+                "type": "file",
+                "path": "Break The Syntax\\Forensics\\images\\Screenshot_220.png",
+                "extension": ".png",
+                "size": 69570
+              },
+              {
+                "name": "Screenshot_221.png",
+                "type": "file",
+                "path": "Break The Syntax\\Forensics\\images\\Screenshot_221.png",
+                "extension": ".png",
+                "size": 183555
+              },
+              {
+                "name": "Screenshot_222.png",
+                "type": "file",
+                "path": "Break The Syntax\\Forensics\\images\\Screenshot_222.png",
+                "extension": ".png",
+                "size": 39829
+              },
+              {
+                "name": "Screenshot_223.png",
+                "type": "file",
+                "path": "Break The Syntax\\Forensics\\images\\Screenshot_223.png",
+                "extension": ".png",
+                "size": 36849
+              },
+              {
+                "name": "Screenshot_224.png",
+                "type": "file",
+                "path": "Break The Syntax\\Forensics\\images\\Screenshot_224.png",
+                "extension": ".png",
+                "size": 161188
+              }
+            ]
+          },
+          {
+            "name": "monkey_see.md",
+            "type": "file",
+            "path": "Break The Syntax\\Forensics\\monkey_see.md",
+            "extension": ".md",
+            "size": 3344
+          },
+          {
+            "name": "Readme.md",
+            "type": "file",
+            "path": "Break The Syntax\\Forensics\\Readme.md",
+            "extension": ".md",
+            "size": 244
+          },
+          {
+            "name": "Sus_data.md",
+            "type": "file",
+            "path": "Break The Syntax\\Forensics\\Sus_data.md",
+            "extension": ".md",
+            "size": 2176
+          }
+        ]
+      },
+      {
+        "name": "Readme.md",
+        "type": "file",
+        "path": "Break The Syntax\\Readme.md",
+        "extension": ".md",
+        "size": 0
+      },
+      {
+        "name": "rev",
+        "type": "directory",
+        "path": "Break The Syntax\\rev",
+        "children": [
+          {
+            "name": "Readme.md",
+            "type": "file",
+            "path": "Break The Syntax\\rev\\Readme.md",
+            "extension": ".md",
+            "size": 131
+          },
+          {
+            "name": "Translator.md",
+            "type": "file",
+            "path": "Break The Syntax\\rev\\Translator.md",
+            "extension": ".md",
+            "size": 6462
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "CTF@CIT",
+    "type": "directory",
+    "path": "CTF@CIT",
+    "children": [
+      {
+        "name": "Forensic",
+        "type": "directory",
+        "path": "CTF@CIT\\Forensic",
+        "children": [
+          {
+            "name": "Baller.md",
+            "type": "file",
+            "path": "CTF@CIT\\Forensic\\Baller.md",
+            "extension": ".md",
+            "size": 1121
+          },
+          {
+            "name": "Bits 'n Pieces.md",
+            "type": "file",
+            "path": "CTF@CIT\\Forensic\\Bits 'n Pieces.md",
+            "extension": ".md",
+            "size": 1743
+          },
+          {
+            "name": "Brainrot Quiz!.md",
+            "type": "file",
+            "path": "CTF@CIT\\Forensic\\Brainrot Quiz!.md",
+            "extension": ".md",
+            "size": 797
+          },
+          {
+            "name": "images",
+            "type": "directory",
+            "path": "CTF@CIT\\Forensic\\images",
+            "children": [
+              {
+                "name": "Cache0000.bin_collage.bmp",
+                "type": "file",
+                "path": "CTF@CIT\\Forensic\\images\\Cache0000.bin_collage.bmp",
+                "extension": ".bmp",
+                "size": 49201274
+              },
+              {
+                "name": "extracted_1745768036672.gif",
+                "type": "file",
+                "path": "CTF@CIT\\Forensic\\images\\extracted_1745768036672.gif",
+                "extension": ".gif",
+                "size": 2925133
+              },
+              {
+                "name": "Screenshot_196.png",
+                "type": "file",
+                "path": "CTF@CIT\\Forensic\\images\\Screenshot_196.png",
+                "extension": ".png",
+                "size": 107738
+              },
+              {
+                "name": "Screenshot_197.png",
+                "type": "file",
+                "path": "CTF@CIT\\Forensic\\images\\Screenshot_197.png",
+                "extension": ".png",
+                "size": 19199
+              },
+              {
+                "name": "Screenshot_198.png",
+                "type": "file",
+                "path": "CTF@CIT\\Forensic\\images\\Screenshot_198.png",
+                "extension": ".png",
+                "size": 123823
+              },
+              {
+                "name": "Screenshot_200.png",
+                "type": "file",
+                "path": "CTF@CIT\\Forensic\\images\\Screenshot_200.png",
+                "extension": ".png",
+                "size": 550291
+              },
+              {
+                "name": "Screenshot_201.png",
+                "type": "file",
+                "path": "CTF@CIT\\Forensic\\images\\Screenshot_201.png",
+                "extension": ".png",
+                "size": 620789
+              },
+              {
+                "name": "Screenshot_202.png",
+                "type": "file",
+                "path": "CTF@CIT\\Forensic\\images\\Screenshot_202.png",
+                "extension": ".png",
+                "size": 339809
+              },
+              {
+                "name": "Screenshot_203.png",
+                "type": "file",
+                "path": "CTF@CIT\\Forensic\\images\\Screenshot_203.png",
+                "extension": ".png",
+                "size": 24140
+              },
+              {
+                "name": "Screenshot_210.png",
+                "type": "file",
+                "path": "CTF@CIT\\Forensic\\images\\Screenshot_210.png",
+                "extension": ".png",
+                "size": 12090
+              }
+            ]
+          },
+          {
+            "name": "Readme.md",
+            "type": "file",
+            "path": "CTF@CIT\\Forensic\\Readme.md",
+            "extension": ".md",
+            "size": 297
+          },
+          {
+            "name": "True CTF Love.md",
+            "type": "file",
+            "path": "CTF@CIT\\Forensic\\True CTF Love.md",
+            "extension": ".md",
+            "size": 1635
+          },
+          {
+            "name": "We lost the flag.md",
+            "type": "file",
+            "path": "CTF@CIT\\Forensic\\We lost the flag.md",
+            "extension": ".md",
+            "size": 810
+          }
+        ]
+      },
+      {
+        "name": "images",
+        "type": "directory",
+        "path": "CTF@CIT\\images",
+        "children": [
+          {
+            "name": "Screenshot_212.png",
+            "type": "file",
+            "path": "CTF@CIT\\images\\Screenshot_212.png",
+            "extension": ".png",
+            "size": 46096
+          }
+        ]
+      },
+      {
+        "name": "OSINT",
+        "type": "directory",
+        "path": "CTF@CIT\\OSINT",
+        "children": [
+          {
+            "name": "images",
+            "type": "directory",
+            "path": "CTF@CIT\\OSINT\\images",
+            "children": [
+              {
+                "name": "Screenshot_204.png",
+                "type": "file",
+                "path": "CTF@CIT\\OSINT\\images\\Screenshot_204.png",
+                "extension": ".png",
+                "size": 40491
+              },
+              {
+                "name": "Screenshot_205.png",
+                "type": "file",
+                "path": "CTF@CIT\\OSINT\\images\\Screenshot_205.png",
+                "extension": ".png",
+                "size": 36918
+              },
+              {
+                "name": "Screenshot_207.png",
+                "type": "file",
+                "path": "CTF@CIT\\OSINT\\images\\Screenshot_207.png",
+                "extension": ".png",
+                "size": 283257
+              },
+              {
+                "name": "Screenshot_208.png",
+                "type": "file",
+                "path": "CTF@CIT\\OSINT\\images\\Screenshot_208.png",
+                "extension": ".png",
+                "size": 578577
+              },
+              {
+                "name": "Screenshot_209.png",
+                "type": "file",
+                "path": "CTF@CIT\\OSINT\\images\\Screenshot_209.png",
+                "extension": ".png",
+                "size": 11342
+              },
+              {
+                "name": "Screenshot_211.png",
+                "type": "file",
+                "path": "CTF@CIT\\OSINT\\images\\Screenshot_211.png",
+                "extension": ".png",
+                "size": 19626
+              }
+            ]
+          },
+          {
+            "name": "No Country for Old Keys.md",
+            "type": "file",
+            "path": "CTF@CIT\\OSINT\\No Country for Old Keys.md",
+            "extension": ".md",
+            "size": 793
+          },
+          {
+            "name": "Readme.md",
+            "type": "file",
+            "path": "CTF@CIT\\OSINT\\Readme.md",
+            "extension": ".md",
+            "size": 303
+          },
+          {
+            "name": "The Domain Always Resolves Twice.md",
+            "type": "file",
+            "path": "CTF@CIT\\OSINT\\The Domain Always Resolves Twice.md",
+            "extension": ".md",
+            "size": 725
+          },
+          {
+            "name": "Throwback to the Future.md",
+            "type": "file",
+            "path": "CTF@CIT\\OSINT\\Throwback to the Future.md",
+            "extension": ".md",
+            "size": 976
+          }
+        ]
+      },
+      {
+        "name": "Readme.md",
+        "type": "file",
+        "path": "CTF@CIT\\Readme.md",
+        "extension": ".md",
+        "size": 194
+      }
+    ]
+  },
+  {
+    "name": "damctf",
+    "type": "directory",
+    "path": "damctf",
+    "children": [
+      {
+        "name": "misc",
+        "type": "directory",
+        "path": "damctf\\misc",
+        "children": [
+          {
+            "name": "Readme.md",
+            "type": "file",
+            "path": "damctf\\misc\\Readme.md",
+            "extension": ".md",
+            "size": 131
+          },
+          {
+            "name": "RISCy_Business.md",
+            "type": "file",
+            "path": "damctf\\misc\\RISCy_Business.md",
+            "extension": ".md",
+            "size": 7898
+          }
+        ]
+      },
+      {
+        "name": "Readme.md",
+        "type": "file",
+        "path": "damctf\\Readme.md",
+        "extension": ".md",
+        "size": 43
+      }
+    ]
+  },
+  {
+    "name": "Midnight Sun CTF 2025 Quals",
+    "type": "directory",
+    "path": "Midnight Sun CTF 2025 Quals",
+    "children": [
+      {
+        "name": "crypto",
+        "type": "directory",
+        "path": "Midnight Sun CTF 2025 Quals\\crypto",
+        "children": [
+          {
+            "name": "images",
+            "type": "directory",
+            "path": "Midnight Sun CTF 2025 Quals\\crypto\\images",
+            "children": [
+              {
+                "name": "Screenshot_226.png",
+                "type": "file",
+                "path": "Midnight Sun CTF 2025 Quals\\crypto\\images\\Screenshot_226.png",
+                "extension": ".png",
+                "size": 24399
+              },
+              {
+                "name": "Screenshot_229.png",
+                "type": "file",
+                "path": "Midnight Sun CTF 2025 Quals\\crypto\\images\\Screenshot_229.png",
+                "extension": ".png",
+                "size": 38897
+              }
+            ]
+          },
+          {
+            "name": "Old_Chall.md",
+            "type": "file",
+            "path": "Midnight Sun CTF 2025 Quals\\crypto\\Old_Chall.md",
+            "extension": ".md",
+            "size": 5090
+          },
+          {
+            "name": "Readme.md",
+            "type": "file",
+            "path": "Midnight Sun CTF 2025 Quals\\crypto\\Readme.md",
+            "extension": ".md",
+            "size": 144
+          }
+        ]
+      },
+      {
+        "name": "Readme.md",
+        "type": "file",
+        "path": "Midnight Sun CTF 2025 Quals\\Readme.md",
+        "extension": ".md",
+        "size": 0
+      }
+    ]
+  },
+  {
+    "name": "NahamCon 2025",
+    "type": "directory",
+    "path": "NahamCon 2025",
+    "children": [
+      {
+        "name": "images",
+        "type": "directory",
+        "path": "NahamCon 2025\\images",
+        "children": [
+          {
+            "name": "6a5f726d9d6a9b18e92f0a778c9b80f65aa61feab18a9bc679fd10b2d114982c.png",
+            "type": "file",
+            "path": "NahamCon 2025\\images\\6a5f726d9d6a9b18e92f0a778c9b80f65aa61feab18a9bc679fd10b2d114982c.png",
+            "extension": ".png",
+            "size": 6465192
+          },
+          {
+            "name": "Screenshot_239.png",
+            "type": "file",
+            "path": "NahamCon 2025\\images\\Screenshot_239.png",
+            "extension": ".png",
+            "size": 49357
+          }
+        ]
+      },
+      {
+        "name": "Miscellaneous",
+        "type": "directory",
+        "path": "NahamCon 2025\\Miscellaneous",
+        "children": [
+          {
+            "name": "images",
+            "type": "directory",
+            "path": "NahamCon 2025\\Miscellaneous\\images",
+            "children": [
+              {
+                "name": "piet_code_file.png",
+                "type": "file",
+                "path": "NahamCon 2025\\Miscellaneous\\images\\piet_code_file.png",
+                "extension": ".png",
+                "size": 261
+              },
+              {
+                "name": "Screenshot_233.png",
+                "type": "file",
+                "path": "NahamCon 2025\\Miscellaneous\\images\\Screenshot_233.png",
+                "extension": ".png",
+                "size": 7002
+              },
+              {
+                "name": "Screenshot_234.png",
+                "type": "file",
+                "path": "NahamCon 2025\\Miscellaneous\\images\\Screenshot_234.png",
+                "extension": ".png",
+                "size": 20586
+              }
+            ]
+          },
+          {
+            "name": "I_Want_Pie.md",
+            "type": "file",
+            "path": "NahamCon 2025\\Miscellaneous\\I_Want_Pie.md",
+            "extension": ".md",
+            "size": 10636
+          },
+          {
+            "name": "Readme.md",
+            "type": "file",
+            "path": "NahamCon 2025\\Miscellaneous\\Readme.md",
+            "extension": ".md",
+            "size": 148
+          }
+        ]
+      },
+      {
+        "name": "OSINT",
+        "type": "directory",
+        "path": "NahamCon 2025\\OSINT",
+        "children": [
+          {
+            "name": "images",
+            "type": "directory",
+            "path": "NahamCon 2025\\OSINT\\images",
+            "children": [
+              {
+                "name": "Screenshot_235.png",
+                "type": "file",
+                "path": "NahamCon 2025\\OSINT\\images\\Screenshot_235.png",
+                "extension": ".png",
+                "size": 39251
+              },
+              {
+                "name": "Screenshot_236.png",
+                "type": "file",
+                "path": "NahamCon 2025\\OSINT\\images\\Screenshot_236.png",
+                "extension": ".png",
+                "size": 59713
+              },
+              {
+                "name": "Screenshot_237.png",
+                "type": "file",
+                "path": "NahamCon 2025\\OSINT\\images\\Screenshot_237.png",
+                "extension": ".png",
+                "size": 19880
+              },
+              {
+                "name": "Screenshot_238.png",
+                "type": "file",
+                "path": "NahamCon 2025\\OSINT\\images\\Screenshot_238.png",
+                "extension": ".png",
+                "size": 9596
+              }
+            ]
+          },
+          {
+            "name": "Readme.md",
+            "type": "file",
+            "path": "NahamCon 2025\\OSINT\\Readme.md",
+            "extension": ".md",
+            "size": 154
+          },
+          {
+            "name": "Sending_Mixed_Signals.md",
+            "type": "file",
+            "path": "NahamCon 2025\\OSINT\\Sending_Mixed_Signals.md",
+            "extension": ".md",
+            "size": 3097
+          }
+        ]
+      },
+      {
+        "name": "Readme.md",
+        "type": "file",
+        "path": "NahamCon 2025\\Readme.md",
+        "extension": ".md",
+        "size": 370
+      },
+      {
+        "name": "Reverse Engineering",
+        "type": "directory",
+        "path": "NahamCon 2025\\Reverse Engineering",
+        "children": []
+      },
+      {
+        "name": "Web",
+        "type": "directory",
+        "path": "NahamCon 2025\\Web",
+        "children": [
+          {
+            "name": "images",
+            "type": "directory",
+            "path": "NahamCon 2025\\Web\\images",
+            "children": [
+              {
+                "name": "Screenshot_232.png",
+                "type": "file",
+                "path": "NahamCon 2025\\Web\\images\\Screenshot_232.png",
+                "extension": ".png",
+                "size": 21896
+              }
+            ]
+          },
+          {
+            "name": "Readme.md",
+            "type": "file",
+            "path": "NahamCon 2025\\Web\\Readme.md",
+            "extension": ".md",
+            "size": 116
+          },
+          {
+            "name": "SNAD.md",
+            "type": "file",
+            "path": "NahamCon 2025\\Web\\SNAD.md",
+            "extension": ".md",
+            "size": 10395
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Swiss-Hacking-Challenge",
+    "type": "directory",
+    "path": "Swiss-Hacking-Challenge",
+    "children": [
+      {
+        "name": "RE",
+        "type": "directory",
+        "path": "Swiss-Hacking-Challenge\\RE",
+        "children": [
+          {
+            "name": "absolutely-proprietary.md",
+            "type": "file",
+            "path": "Swiss-Hacking-Challenge\\RE\\absolutely-proprietary.md",
+            "extension": ".md",
+            "size": 8574
+          },
+          {
+            "name": "images",
+            "type": "directory",
+            "path": "Swiss-Hacking-Challenge\\RE\\images",
+            "children": [
+              {
+                "name": "Screenshot_213.png",
+                "type": "file",
+                "path": "Swiss-Hacking-Challenge\\RE\\images\\Screenshot_213.png",
+                "extension": ".png",
+                "size": 106360
+              }
+            ]
+          },
+          {
+            "name": "Readme.md",
+            "type": "file",
+            "path": "Swiss-Hacking-Challenge\\RE\\Readme.md",
+            "extension": ".md",
+            "size": 91
+          }
+        ]
+      },
+      {
+        "name": "Readme.md",
+        "type": "file",
+        "path": "Swiss-Hacking-Challenge\\Readme.md",
+        "extension": ".md",
+        "size": 224
+      }
+    ]
+  }
+]

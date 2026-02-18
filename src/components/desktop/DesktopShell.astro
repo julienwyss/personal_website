@@ -5,6 +5,9 @@ import TerminalApp from "../apps/TerminalApp.astro";
 import LinkedInApp from "../apps/LinkedInApp.astro";
 import GithubApp from "../apps/GithubApp.astro";
 import ContactApp from "../apps/ContactApp.astro";
+import WriteupExplorer from "../apps/WriteupExplorer.astro";
+import WriteupViewer from "../apps/WriteupViewer.astro";
+import ImageViewer from "../apps/ImageViewer.astro";
 ---
 
 <div id="desktop" class="fixed inset-0 bg-zinc-900 overflow-hidden font-mono">
@@ -33,4 +36,20 @@ import ContactApp from "../apps/ContactApp.astro";
     </AppWindow>
   </div>
 
+  <div id="explorer-template" class="hidden">
+    <AppWindow title="WriteUp Explorer" appId="explorer">
+        <WriteupExplorer />
+    </AppWindow>
+</div>
+
+<div id="viewer-template" class="hidden">
+    <AppWindow title="Writeup Viewer" appId="writeup-viewer">
+        <WriteupViewer />
+    </AppWindow>
+    
+<div id="image-viewer-template" class="hidden">
+    <AppWindow title="Image Viewer" appId="image-viewer">
+        <ImageViewer />
+    </AppWindow>
+</div>
 <script src="../../scripts/windowManager.ts"></script>
