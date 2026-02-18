@@ -4,6 +4,7 @@ import AppWindow from "./AppWindow.astro";
 import TerminalApp from "../apps/TerminalApp.astro";
 import LinkedInApp from "../apps/LinkedInApp.astro";
 import GithubApp from "../apps/GithubApp.astro";
+import ContactApp from "../apps/ContactApp.astro";
 ---
 
 <div id="desktop" class="fixed inset-0 bg-zinc-900 overflow-hidden font-mono">
@@ -21,10 +22,15 @@ import GithubApp from "../apps/GithubApp.astro";
       <LinkedInApp />
     </AppWindow>
   </div>
-  <div id="github-template" class="hidden">
+  <!-- <div id="github-template" class="hidden">
     <AppWindow title="GitHub" appId="github">
       <GithubApp />
     </AppWindow>
-</div>
+  </div> -->
+<div id="contact-template" class="hidden">
+    <AppWindow title="Contact" appId="contact">
+      <ContactApp />
+    </AppWindow>
+  </div>
 
 <script src="../../scripts/windowManager.ts"></script>

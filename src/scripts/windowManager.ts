@@ -1,4 +1,5 @@
-type AppId = "terminal" | "linkedin" | "github";
+type AppId = "terminal" | "linkedin" | "github" | "contact";
+import { initContactApp } from './ContactApp';
 
 let zIndex = 10;
 const app_open_start_left = 100;
@@ -26,6 +27,13 @@ const apps: Record<AppId, () => HTMLElement> = {
     const wrapper = document.createElement("div");
     wrapper.innerHTML = `
       ${document.getElementById("github-template")?.innerHTML}
+    `;
+    return wrapper.firstElementChild as HTMLElement;
+  },
+  contact: () => {
+    const wrapper = document.createElement("div");
+    wrapper.innerHTML = `
+      ${document.getElementById("contact-template")?.innerHTML}
     `;
     return wrapper.firstElementChild as HTMLElement;
   },
@@ -76,6 +84,11 @@ const apps: Record<AppId, () => HTMLElement> = {
   win.style.zIndex = String(zIndex++);
 
   windowLayer.appendChild(win);
+
+  if (appId === 'contact') {
+    initContactApp(win);
+  }
+
   if (appId === 'linkedin') {
     const container = win.querySelector('.linkedin-container');
     if (container) {
@@ -98,6 +111,7 @@ const apps: Record<AppId, () => HTMLElement> = {
       }
     }
   }
+
   enableWindowControls(win);
 };
 

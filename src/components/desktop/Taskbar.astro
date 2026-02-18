@@ -10,7 +10,6 @@ import ToolTips from '../utils/ToolTips.astro';
     data-tooltip-target="tooltip-profile-picture"
     data-tooltip-placement="right"
     class="w-10 h-10 rounded-md bg-zinc-700 hover:bg-zinc-600 text-zinc-200 flex items-center justify-center"
-    title="ProfilePicture"
   >
     <img
       src={`${import.meta.env.BASE_URL}ProfilePicture.jpg`}
@@ -21,10 +20,10 @@ import ToolTips from '../utils/ToolTips.astro';
     data-tooltip-target="tooltip-terminal"
     data-tooltip-placement="right"
     type="button"
-    class="w-10 h-10 rounded-md bg-zinc-700 hover:bg-zinc-600 text-zinc-200 flex items-center justify-center cursor-pointer"
+    class="w-10 h-10 rounded-md bg-zinc-700 hover:bg-zinc-600 text-zinc-200 flex items-center justify-center cursor-pointer font-black text-xl"
     onclick="window.openApp('terminal')"
   >
-    >_
+    <span class="text-red-500">></span><span class="text-white">_</span>
   </button>
 
 
@@ -46,6 +45,16 @@ import ToolTips from '../utils/ToolTips.astro';
     onclick="window.openApp('github')"
   >
     <img src={`${import.meta.env.BASE_URL}github-logo-inverted.svg`} alt="GitHub Logo" class="w-full h-full object-cover rounded-md">
+  </button>
+
+  <button
+    data-tooltip-target="tooltip-contact"
+    data-tooltip-placement="right"
+    type="button"
+    class="w-10 h-10 rounded-md bg-zinc-700 hover:bg-zinc-600 text-zinc-200 flex items-center justify-center cursor-pointer"
+    onclick="window.openApp('contact')"
+  >
+    Cont
   </button>
   
   
