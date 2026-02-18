@@ -165,8 +165,16 @@ function enableWindowControls(win: HTMLElement) {
 
   document.addEventListener("mousemove", (e) => {
     if (!dragging) return;
-    win.style.left = `${e.clientX - offsetX}px`;
-    win.style.top = `${e.clientY - offsetY}px`;
+
+    const taskbarWidth = 57;
+    const titleBarHeight = titleBar.offsetHeight;
+    const winWidth = win.offsetWidth;
+
+    const newLeft = Math.max(taskbarWidth, Math.min(e.clientX - offsetX, window.innerWidth - winWidth));
+    const newTop = Math.max(0, Math.min(e.clientY - offsetY, window.innerHeight - titleBarHeight));
+
+    win.style.left = `${newLeft}px`;
+    win.style.top = `${newTop}px`;
   });
 
   document.addEventListener("mouseup", () => {
