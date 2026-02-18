@@ -196,25 +196,115 @@ export function initImageViewer(container: HTMLElement, filePath: string) {
         ? cleanPath
         : `${import.meta.env.BASE_URL}writeups/${encodePath(cleanPath)}`;
 
+    const wrapper = document.createElement('div');
+    wrapper.style.width = '100%';
+    wrapper.style.height = '100%';
+
     const img = document.createElement('img');
     img.src = imgUrl;
     img.alt = fileName;
-    img.className = 'max-w-full max-h-full object-contain rounded shadow-lg cursor-zoom-in transition-all duration-200';
+    img.style.display = 'block';
 
     let zoomed = false;
-    img.addEventListener('click', () => {
-        zoomed = !zoomed;
-        if (zoomed) {
-            img.className = 'rounded shadow-lg cursor-zoom-out';
-            img.style.maxWidth = 'none';
-            img.style.maxHeight = 'none';
-        } else {
-            img.className = 'max-w-full max-h-full object-contain rounded shadow-lg cursor-zoom-in transition-all duration-200';
-            img.style.maxWidth = '';
-            img.style.maxHeight = '';
+    const zoomFactor = 1.5;
+
+    const getContainerSize = () => {
+        const rect = contentEl.getBoundingClientRect();
+        return {
+            width: Math.max(1, Math.floor(rect.width)),
+            height: Math.max(1, Math.floor(rect.height)),
+        };
+    };
+
+    const getFitSize = () => {
+        const { width: containerWidth, height: containerHeight } = getContainerSize();
+        const naturalWidth = img.naturalWidth || 1;
+        const naturalHeight = img.naturalHeight || 1;
+        const ratio = naturalWidth / naturalHeight;
+
+        let fitWidth = containerWidth;
+        let fitHeight = containerWidth / ratio;
+        if (fitHeight > containerHeight) {
+            fitHeight = containerHeight;
+            fitWidth = containerHeight * ratio;
         }
+
+        return {
+            fitWidth: Math.max(1, Math.floor(fitWidth)),
+            fitHeight: Math.max(1, Math.floor(fitHeight)),
+            containerWidth,
+            containerHeight,
+        };
+    };
+
+    const applyFit = () => {
+        zoomed = false;
+        contentEl.classList.remove('items-start', 'justify-start');
+        contentEl.classList.add('items-center', 'justify-center');
+
+        wrapper.style.width = '100%';
+        wrapper.style.height = '100%';
+
+        img.className = 'w-full h-full object-contain rounded shadow-lg cursor-zoom-in transition-all duration-200';
+        img.style.width = '';
+        img.style.height = '';
+        img.style.maxWidth = '';
+        img.style.maxHeight = '';
+
+        contentEl.scrollTop = 0;
+        contentEl.scrollLeft = 0;
+    };
+
+    const applyZoom = () => {
+        zoomed = true;
+        const { fitWidth, fitHeight, containerWidth, containerHeight } = getFitSize();
+        const zoomWidth = Math.max(1, Math.floor(fitWidth * zoomFactor));
+        const zoomHeight = Math.max(1, Math.floor(fitHeight * zoomFactor));
+
+        img.className = 'rounded shadow-lg cursor-zoom-out';
+        img.style.width = `${zoomWidth}px`;
+        img.style.height = `${zoomHeight}px`;
+        img.style.maxWidth = 'none';
+        img.style.maxHeight = 'none';
+
+        const needsScroll = zoomWidth > containerWidth || zoomHeight > containerHeight;
+        if (needsScroll) {
+            contentEl.classList.remove('items-center', 'justify-center');
+            contentEl.classList.add('items-start', 'justify-start');
+            wrapper.style.width = `${zoomWidth}px`;
+            wrapper.style.height = `${zoomHeight}px`;
+
+            requestAnimationFrame(() => {
+                contentEl.scrollLeft = Math.max(0, Math.floor((zoomWidth - containerWidth) / 2));
+                contentEl.scrollTop = Math.max(0, Math.floor((zoomHeight - containerHeight) / 2));
+            });
+        } else {
+            contentEl.classList.remove('items-start', 'justify-start');
+            contentEl.classList.add('items-center', 'justify-center');
+            wrapper.style.width = '100%';
+            wrapper.style.height = '100%';
+            contentEl.scrollLeft = 0;
+            contentEl.scrollTop = 0;
+        }
+    };
+
+    const toggleZoom = () => {
+        if (!img.complete) return;
+        if (zoomed) applyFit();
+        else applyZoom();
+    };
+
+    img.addEventListener('click', toggleZoom);
+    img.addEventListener('load', () => {
+        applyFit();
+    });
+
+    window.addEventListener('resize', () => {
+        if (!img.complete) return;
+        if (zoomed) applyZoom();
     });
 
     contentEl.innerHTML = '';
-    contentEl.appendChild(img);
+    wrapper.appendChild(img);
+    contentEl.appendChild(wrapper);
 }
