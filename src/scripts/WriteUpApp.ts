@@ -1,3 +1,5 @@
+import DOMPurify from 'dompurify';
+
 export async function initExplorer(container: HTMLElement, initialPath?: string) {
     const grid = container.querySelector('#file-grid') as HTMLElement;
     const addressBar = container.querySelector('#address-bar') as HTMLElement;
@@ -144,11 +146,11 @@ export async function initWriteupViewer(container: HTMLElement, filePath: string
 
         renderer.image = ({ href, title, text }) => {
             if (href.startsWith('http') || href.startsWith('//')) {
-                return `<img src="${href}" alt="${text}" title="${title || ''}" class="cursor-zoom-in rounded shadow-lg my-4 max-w-full" onclick="window.openApp('image-viewer', '${href}')">`;
+                return `<img src="${href}" alt="${text}" title="${title || ''}" class="cursor-zoom-in rounded shadow-lg my-4 max-w-full" data-image-path="${href}">`;
             }
             const relPath = `${folderPath}/${href}`;
             const fullImgPath = `${import.meta.env.BASE_URL}writeups/${encodePath(relPath)}`;
-            return `<img src="${fullImgPath}" alt="${text}" title="${title || ''}" class="cursor-zoom-in rounded shadow-lg my-4 max-w-full" onclick="window.openApp('image-viewer', '${relPath}')">`;
+            return `<img src="${fullImgPath}" alt="${text}" title="${title || ''}" class="cursor-zoom-in rounded shadow-lg my-4 max-w-full" data-image-path="${relPath}">`;
         };
 
         renderer.link = ({ href, title, text }) => {
@@ -157,19 +159,52 @@ export async function initWriteupViewer(container: HTMLElement, filePath: string
                 const cleanHref = href.replace(/\/$/, '');
                 if (cleanHref.endsWith('.md')) {
                     const targetPath = folderPath ? `${folderPath}/${cleanHref}` : cleanHref;
-                    return `<a href="#" title="${title || ''}" onclick="event.preventDefault(); window.openApp('writeup-viewer', '${targetPath}')" class="text-cyan-400 hover:underline">${text}</a>`;
+                    return `<a href="#" title="${title || ''}" data-writeup-path="${targetPath}" class="text-cyan-400 hover:underline">${text}</a>`;
                 }
                 const hasExtension = /\.[a-zA-Z0-9]+$/.test(cleanHref);
                 if (!hasExtension) {
                     const targetFolder = folderPath ? `${folderPath}/${cleanHref}` : cleanHref;
-                    return `<a href="#" title="${title || ''}" onclick="event.preventDefault(); window.openApp('explorer', '${targetFolder}')" class="text-yellow-400 hover:underline">${text}</a>`;
+                    return `<a href="#" title="${title || ''}" data-explorer-path="${targetFolder}" class="text-yellow-400 hover:underline">${text}</a>`;
                 }
             }
             return `<a href="${href}" title="${title || ''}" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:underline">${text}</a>`;
         };
 
         const html = await marked.parse(cleanMarkdown, { renderer });
-        contentDiv.innerHTML = html;
+        contentDiv.innerHTML = DOMPurify.sanitize(html);
+
+        contentDiv.addEventListener('click', (e) => {
+            const target = e.target as HTMLElement;
+
+            const img = target.closest<HTMLElement>('[data-image-path]');
+            if (img) {
+                (window as any).openApp('image-viewer', img.dataset.imagePath);
+                return;
+            }
+
+            const writeupLink = target.closest<HTMLElement>('[data-writeup-path]');
+            if (writeupLink) {
+                e.preventDefault();
+                (window as any).openApp('writeup-viewer', writeupLink.dataset.writeupPath);
+                return;
+            }
+
+            const explorerLink = target.closest<HTMLElement>('[data-explorer-path]');
+            if (explorerLink) {
+                e.preventDefault();
+                (window as any).openApp('explorer', explorerLink.dataset.explorerPath);
+                return;
+            }
+
+            const anchor = target.closest<HTMLAnchorElement>('a[href]');
+            if (anchor) {
+                const href = anchor.getAttribute('href');
+                if (href && (href.startsWith('http') || href.startsWith('//'))) {
+                    e.preventDefault();
+                    window.open(href, '_blank', 'noopener,noreferrer');
+                }
+            }
+        });
 
         contentDiv.querySelectorAll('pre code').forEach((block) => {
             hljs.highlightElement(block as HTMLElement);
@@ -177,11 +212,15 @@ export async function initWriteupViewer(container: HTMLElement, filePath: string
 
     } catch (e: any) {
         console.error(e);
-        contentDiv.innerHTML = `
-        <div style="color: #ff7b72; padding: 20px;">
-            <h3>Error loading writeup</h3>
-            <p>${e.message}</p>
-        </div>`;
+        const errDiv = document.createElement('div');
+        errDiv.style.cssText = 'color: #ff7b72; padding: 20px;';
+        const errTitle = document.createElement('h3');
+        errTitle.textContent = 'Error loading writeup';
+        const errMsg = document.createElement('p');
+        errMsg.textContent = e.message;
+        errDiv.append(errTitle, errMsg);
+        contentDiv.innerHTML = '';
+        contentDiv.appendChild(errDiv);
     }
 }
 

@@ -160,7 +160,16 @@ export function initContactApp(container: HTMLElement) {
                 } else {
                     const historyLine = document.createElement('div');
                     historyLine.className = 'flex items-baseline gap-2 h-5';
-                    historyLine.innerHTML = `<span class="text-yellow-500 leading-none h-5 flex items-center">[SECURITY]</span> <span class="text-zinc-300 leading-none h-5 flex items-center">${value}</span> <span class="text-green-500 leading-none h-5 flex items-center">✓ Verified</span>`;
+                    const secLabel = document.createElement('span');
+                    secLabel.className = 'text-yellow-500 leading-none h-5 flex items-center';
+                    secLabel.textContent = '[SECURITY]';
+                    const secValue = document.createElement('span');
+                    secValue.className = 'text-zinc-300 leading-none h-5 flex items-center';
+                    secValue.textContent = value;
+                    const secOk = document.createElement('span');
+                    secOk.className = 'text-green-500 leading-none h-5 flex items-center';
+                    secOk.textContent = '✓ Verified';
+                    historyLine.append(secLabel, secValue, secOk);
                     history.insertBefore(historyLine, activeLine);
                     scrollToBottom();
                     currentStep++;
@@ -176,7 +185,16 @@ export function initContactApp(container: HTMLElement) {
             if (step.key !== 'verify') {
                 const historyLine = document.createElement('div');
                 historyLine.className = 'flex items-baseline gap-2 h-5';
-                historyLine.innerHTML = `<span class="text-cyan-400 leading-none h-5 flex items-center">?</span> <span class="font-bold text-zinc-100 leading-none h-5 flex items-center">${step.prompt}</span> <span class="text-zinc-300 leading-none h-5 flex items-center">${value}</span>`;
+                const qMark = document.createElement('span');
+                qMark.className = 'text-cyan-400 leading-none h-5 flex items-center';
+                qMark.textContent = '?';
+                const promptSpan = document.createElement('span');
+                promptSpan.className = 'font-bold text-zinc-100 leading-none h-5 flex items-center';
+                promptSpan.textContent = step.prompt ?? '';
+                const valueSpan = document.createElement('span');
+                valueSpan.className = 'text-zinc-300 leading-none h-5 flex items-center';
+                valueSpan.textContent = value;
+                historyLine.append(qMark, promptSpan, valueSpan);
                 history.insertBefore(historyLine, activeLine);
                 scrollToBottom();
             }
