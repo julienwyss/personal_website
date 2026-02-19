@@ -2,19 +2,13 @@
 import ToolTips from "../utils/ToolTips.astro";
 ---
 
-<div
-  class="absolute left-0 top-0 h-full w-14 bg-zinc-800 border-l border-zinc-700 flex flex-col items-center py-4 gap-4"
->
+<div id="taskbar" class="bg-zinc-800 border-zinc-700 flex items-center gap-4">
   <button
     data-tooltip-target="tooltip-profile-picture"
     data-tooltip-placement="right"
     class="w-10 h-10 rounded-md bg-zinc-700 hover:bg-zinc-600 text-zinc-200 flex items-center justify-center"
   >
-    <img
-      src={`${import.meta.env.BASE_URL}ProfilePicture.jpg`}
-      alt="Profile Picture"
-      class="w-full h-full object-cover rounded-md"
-    />
+    <img src={`${import.meta.env.BASE_URL}ProfilePicture.jpg`} alt="Profile Picture" class="w-full h-full object-cover rounded-md" />
   </button>
   <button
     data-tooltip-target="tooltip-terminal"
@@ -25,7 +19,6 @@ import ToolTips from "../utils/ToolTips.astro";
   >
     <span class="text-red-500">></span><span class="text-white">_</span>
   </button>
-
   <button
     data-tooltip-target="tooltip-linkedin"
     data-tooltip-placement="right"
@@ -33,13 +26,8 @@ import ToolTips from "../utils/ToolTips.astro";
     class="w-10 h-10 rounded-md bg-zinc-700 hover:bg-zinc-600 text-zinc-200 flex items-center justify-center cursor-pointer"
     onclick="window.openApp('linkedin')"
   >
-    <img
-      src={`${import.meta.env.BASE_URL}linkedin-logo-white.png`}
-      alt="LinkedIn Logo"
-      class="w-full h-full object-cover rounded-md"
-    />
+    <img src={`${import.meta.env.BASE_URL}linkedin-logo-white.png`} alt="LinkedIn Logo" class="w-full h-full object-cover rounded-md" />
   </button>
-
   <button
     data-tooltip-target="tooltip-github"
     data-tooltip-placement="right"
@@ -47,13 +35,8 @@ import ToolTips from "../utils/ToolTips.astro";
     class="w-10 h-10 rounded-md bg-zinc-700 hover:bg-zinc-600 text-zinc-200 flex items-center justify-center cursor-pointer"
     onclick="window.openApp('github')"
   >
-    <img
-      src={`${import.meta.env.BASE_URL}github-logo-inverted.svg`}
-      alt="GitHub Logo"
-      class="w-full h-full object-cover rounded-md"
-    />
+    <img src={`${import.meta.env.BASE_URL}github-logo-inverted.svg`} alt="GitHub Logo" class="w-full h-full object-cover rounded-md" />
   </button>
-
   <button
     data-tooltip-target="tooltip-contact"
     data-tooltip-placement="right"
@@ -61,23 +44,11 @@ import ToolTips from "../utils/ToolTips.astro";
     class="w-10 h-10 rounded-md bg-zinc-700 hover:bg-zinc-600 text-zinc-200 flex items-center justify-center cursor-pointer"
     onclick="window.openApp('contact')"
   >
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="26"
-      height="26"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="#38bdf8"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      style="filter: drop-shadow(0 0 3px #38bdf888);"
-    >
+    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 3px #38bdf888);">
       <rect x="2" y="4" width="20" height="16" rx="2" />
       <polyline points="2,4 12,13 22,4" />
     </svg>
   </button>
-
   <button
     data-tooltip-target="tooltip-writeups"
     data-tooltip-placement="right"
@@ -85,21 +56,9 @@ import ToolTips from "../utils/ToolTips.astro";
     class="w-10 h-10 rounded-md bg-zinc-700 hover:bg-zinc-600 text-zinc-200 flex items-center justify-center cursor-pointer transition-colors"
     onclick="window.openApp('explorer')"
   >
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="26"
-      height="26"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="#facc15"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      style="filter: drop-shadow(0 0 5px #facc15aa);"
-      ><path
-        d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 2H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"
-      ></path></svg
-    >
+    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#facc15" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 5px #facc15aa);">
+      <path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 2H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"></path>
+    </svg>
   </button>
   <div
     id="tooltip-writeups"
@@ -109,6 +68,5 @@ import ToolTips from "../utils/ToolTips.astro";
     CTF Writeups
     <div class="tooltip-arrow" data-popper-arrow></div>
   </div>
-
   <ToolTips />
 </div>

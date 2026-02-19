@@ -255,7 +255,7 @@ class TypewriterRenderer {
     const charWidth = 8;
     const reserved = 30;
     const available = Math.floor(this.container.offsetWidth / charWidth);
-    return Math.max(20, Math.min(80, available - reserved));
+    return Math.max(10, Math.min(80, available - reserved));
   }
 
   private normalizeLevel(level: number): number {

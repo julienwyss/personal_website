@@ -1,0 +1,49 @@
+#taskbar {
+  position: absolute;
+  left: 0; top: 0;
+  height: 100%; width: 3.5rem;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 1rem 0;
+  border-left-width: 1px;
+}
+
+@media (max-width: 767px) {
+  #taskbar {
+    position: fixed;
+    bottom: 0; left: 0; right: 0; top: auto;
+    height: 3.5rem; width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 0 0.75rem;
+    border-left-width: 0;
+    border-top-width: 1px;
+    z-index: 9998;
+  }
+
+  #taskbar button {
+    min-width: 44px;
+    min-height: 44px;
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+
+  .title-bar #btn-close,
+  .title-bar #btn-minimize,
+  .title-bar #btn-maximize {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .title-bar #btn-close svg,
+  .title-bar #btn-minimize svg,
+  .title-bar #btn-maximize svg {
+    width: 0.65rem;
+    height: 0.65rem;
+    opacity: 1;
+  }
+
+  .tooltip {
+    display: none !important;
+  }
+}

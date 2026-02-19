@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "flowbite";
 @import "./terminal.css";
+@import "./taskbar.css";
 
 ::-webkit-scrollbar {
   width: 8px;
@@ -32,6 +33,17 @@
 
 .markdown-body {
   background-color: transparent !important;
+}
+
+.app-content {
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+}
+
+.terminal-line,
+.terminal-progress-bar {
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .markdown-body pre {

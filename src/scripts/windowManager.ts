@@ -9,6 +9,10 @@ const app_open_start_left = 100;
 const app_open_start_top = 100;
 const app_offset = 30;
 
+function isMobile(): boolean {
+  return window.innerWidth < 768;
+}
+
 const windowLayer = document.getElementById("window-layer")!;
 
 const apps: Record<AppId, () => HTMLElement> = {
@@ -101,8 +105,15 @@ const apps: Record<AppId, () => HTMLElement> = {
     attempt++;
   }
 
-  win.style.left = `${leftPos}px`;
-  win.style.top = `${topPos}px`;
+  if (isMobile()) {
+    win.style.left = '0px';
+    win.style.top = '0px';
+    win.style.width = '100%';
+    win.style.height = 'calc(100% - 56px)';
+  } else {
+    win.style.left = `${leftPos}px`;
+    win.style.top = `${topPos}px`;
+  }
   win.style.zIndex = String(zIndex++);
 
   windowLayer.appendChild(win);
@@ -158,11 +169,16 @@ function enableWindowControls(win: HTMLElement) {
     win.style.zIndex = String(zIndex++);
   });
 
+  if (isMobile()) {
+    maxBtn.style.display = 'none';
+  }
+
   let dragging = false;
   let offsetX = 0;
   let offsetY = 0;
 
   titleBar.addEventListener("mousedown", (e) => {
+    if (isMobile()) return;
     dragging = true;
     const rect = win.getBoundingClientRect();
     offsetX = e.clientX - rect.left;
@@ -208,8 +224,7 @@ function enableWindowControls(win: HTMLElement) {
     }, 200);
 
     minimizeTab = document.createElement("div");
-    minimizeTab.className =
-      "pointer-events-auto flex items-center gap-2 bg-zinc-800 border border-zinc-700 border-b-0 rounded-t-md px-3 py-1.5 text-xs text-zinc-300 cursor-pointer hover:bg-zinc-700 transition-colors select-none max-w-[160px]";
+    minimizeTab.className = "pointer-events-auto flex items-center gap-2 bg-zinc-800 border border-zinc-700 border-b-0 rounded-t-md px-3 py-1.5 text-xs text-zinc-300 cursor-pointer hover:bg-zinc-700 transition-colors select-none max-w-[160px]";
     minimizeTab.innerHTML = `
       <span class="truncate flex-1">${title}</span>
       <button class="tab-close ml-1 text-zinc-500 hover:text-red-500 leading-none cursor-pointer transition-colors" title="Schließen">&#x2715;</button>
@@ -259,12 +274,21 @@ function enableWindowControls(win: HTMLElement) {
         height: win.style.height,
       };
 
-      Object.assign(win.style, {
-        left: "56px",
-        top: "0",
-        width: "calc(100% - 56px)",
-        height: "100%",
-      });
+      if (isMobile()) {
+        Object.assign(win.style, {
+          left: "0px",
+          top: "0px",
+          width: "100%",
+          height: "calc(100% - 56px)",
+        });
+      } else {
+        Object.assign(win.style, {
+          left: "56px",
+          top: "0",
+          width: "calc(100% - 56px)",
+          height: "100%",
+        });
+      }
 
       win.style.transition = "all 0.5s ease-in-out";
       maximized = true;

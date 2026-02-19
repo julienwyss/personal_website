@@ -12,6 +12,14 @@ export function initContactApp(container: HTMLElement) {
     }
 
     terminalContainer.addEventListener('click', () => input.focus());
+    terminalContainer.addEventListener('touchend', (e) => {
+      const target = e.target as HTMLElement;
+      if (target !== input) input.focus();
+    });
+
+    input.addEventListener('focus', () => {
+      setTimeout(() => scrollToBottom(), 350);
+    });
 
     let currentStep = 0;
     let formData = { name: '', email: '', message: '', access_key: '' };

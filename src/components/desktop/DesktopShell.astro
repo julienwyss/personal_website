@@ -10,12 +10,12 @@ import WriteupViewer from "../apps/WriteupViewer.astro";
 import ImageViewer from "../apps/ImageViewer.astro";
 ---
 
-<div id="desktop" class="fixed inset-0 bg-zinc-900 overflow-hidden font-mono">
+<div id="desktop" class="fixed inset-0 h-dvh bg-zinc-900 overflow-hidden font-mono">
   <div id="window-layer" class="absolute inset-0"></div>
 
   <Taskbar />
 
-  <div id="minimize-bar" class="fixed bottom-0 left-14 right-0 flex flex-row items-end gap-1 px-1 z-[9999] pointer-events-none"></div>
+  <div id="minimize-bar" class="fixed bottom-14 md:bottom-0 left-0 right-0 md:left-14 flex flex-row items-end gap-1 px-1 z-50 pointer-events-none"></div>
 
   <div id="terminal-template" class="hidden">
     <AppWindow title="Terminal" appId="terminal">
