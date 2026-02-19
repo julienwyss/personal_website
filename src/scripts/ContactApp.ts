@@ -204,7 +204,7 @@ export function initContactApp(container: HTMLElement) {
                     currentStep++;
                     nextStep();
 
-                    const apiKey = "035f6d55-197b-4b4c-b967-6a81609e49af";
+                    const apiKey = import.meta.env.PUBLIC_WEB3FORMS_KEY as string;
                     formData.access_key = apiKey;
 
                     setTimeout(() => {

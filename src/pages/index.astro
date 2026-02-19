@@ -8,6 +8,16 @@ import "../styles/global.css";
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content" />
+    <meta http-equiv="Content-Security-Policy" content="
+      default-src 'self';
+      script-src 'self' *.linkedin.com 'unsafe-inline';
+      connect-src 'self' api.web3forms.com;
+      img-src 'self' data: https:;
+      style-src 'self' 'unsafe-inline';
+      font-src 'self' data:;
+      frame-src *.linkedin.com;
+      object-src 'none';
+    " />
     <title>Portfolio</title>
     <script src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
   </head>
