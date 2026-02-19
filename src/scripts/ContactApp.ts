@@ -3,6 +3,7 @@ export function initContactApp(container: HTMLElement) {
     const activeLine = container.querySelector('.contact-active-line') as HTMLElement;
     const promptLabel = container.querySelector('.contact-prompt') as HTMLElement;
     const input = container.querySelector('.contact-input') as HTMLInputElement;
+    const honeypot = container.querySelector('.contact-honeypot') as HTMLInputElement;
     const terminalContainer = container.querySelector('.contact-terminal') as HTMLElement;
 
     if (!history || !activeLine || !input) {
@@ -13,7 +14,7 @@ export function initContactApp(container: HTMLElement) {
     terminalContainer.addEventListener('click', () => input.focus());
 
     let currentStep = 0;
-    let formData = { name: '', email: '', message: '' };
+    let formData = { name: '', email: '', message: '', access_key: '' };
     let verificationResult = 0;
 
     const steps = [
@@ -177,8 +178,17 @@ export function initContactApp(container: HTMLElement) {
                     currentStep++;
                     nextStep();
 
+                    const apiKey = "035f6d55-197b-4b4c-b967-6a81609e49af";
+                    formData.access_key = apiKey;
+
                     setTimeout(() => {
-                        fetch("https://formspree.io/f/YOUR_FORM_ID", { 
+                        if (honeypot && honeypot.value.trim() !== '') {
+                            currentStep++;
+                            nextStep();
+                            return;
+                        }
+
+                        fetch("https://api.web3forms.com/submit", { 
                             method: "POST",
                             headers: { "Content-Type": "application/json" },
                             body: JSON.stringify(formData)

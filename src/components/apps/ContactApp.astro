@@ -1,6 +1,14 @@
 ---
 ---
 <div class="contact-terminal h-full bg-zinc-900 text-zinc-300 font-mono text-sm p-4 overflow-y-auto cursor-text">
+  <input
+    type="text"
+    class="contact-honeypot"
+    name="website"
+    tabindex="-1"
+    autocomplete="off"
+    style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;"
+  />
   <div class="contact-history flex flex-col gap-1">
     <div class="contact-active-line flex items-baseline gap-2 h-5 hidden">
       <span class="text-cyan-400 leading-none h-5 flex items-center">?</span>
