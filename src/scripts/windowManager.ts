@@ -65,19 +65,23 @@ const apps: Record<AppId, () => HTMLElement> = {
 
   const existingWindows = document.querySelectorAll('.app-window');
 
+  const screenWidth = window.innerWidth;
+  const screenHeight = window.innerHeight;
+  const wrapColumnOffset = 60;
+  const maxWraps = Math.max(1, Math.floor((screenWidth - app_open_start_left - 200) / wrapColumnOffset));
+
   let attempt = 0;
   let leftPos = 0;
   let topPos = 0;
+  const maxAttempts = 500;
 
-  while (true) {
-    leftPos = app_open_start_left + (attempt * app_offset);
-    topPos = app_open_start_top + (attempt * app_offset);
+  while (attempt < maxAttempts) {
+    const stepsPerCascade = Math.max(1, Math.floor((screenHeight - app_open_start_top - 200) / app_offset));
+    const wrap = Math.floor(attempt / stepsPerCascade) % maxWraps;
+    const step = attempt % stepsPerCascade;
 
-    if (leftPos > window.innerWidth - 200 || topPos > window.innerHeight - 200) {
-      leftPos = app_open_start_left + 40;
-      topPos = app_open_start_top + 40;
-      break;
-    }
+    leftPos = app_open_start_left + (wrap * wrapColumnOffset) + (step * app_offset);
+    topPos = app_open_start_top + (step * app_offset);
 
     let occupied = false;
     existingWindows.forEach((w: Element) => {
@@ -147,6 +151,8 @@ function enableWindowControls(win: HTMLElement) {
   const titleBar = win.querySelector(".title-bar") as HTMLElement;
   const closeBtn = win.querySelector("#btn-close") as HTMLElement;
   const maxBtn = win.querySelector("#btn-maximize") as HTMLElement;
+  const minBtn = win.querySelector("#btn-minimize") as HTMLElement;
+  const minimizeBar = document.getElementById("minimize-bar")!;
 
   win.addEventListener("mousedown", () => {
     win.style.zIndex = String(zIndex++);
@@ -183,6 +189,62 @@ function enableWindowControls(win: HTMLElement) {
 
   closeBtn.addEventListener("click", () => {
     win.remove();
+  });
+
+  let minimizeTab: HTMLElement | null = null;
+
+  minBtn.addEventListener("click", () => {
+    const title = titleBar.querySelector("span")?.textContent || "App";
+
+    win.style.transition = "opacity 0.2s ease, transform 0.2s ease";
+    win.style.opacity = "0";
+    win.style.transform = "scale(0.9) translateY(20px)";
+
+    setTimeout(() => {
+      win.style.display = "none";
+      win.style.transition = "";
+      win.style.opacity = "";
+      win.style.transform = "";
+    }, 200);
+
+    minimizeTab = document.createElement("div");
+    minimizeTab.className =
+      "pointer-events-auto flex items-center gap-2 bg-zinc-800 border border-zinc-700 border-b-0 rounded-t-md px-3 py-1.5 text-xs text-zinc-300 cursor-pointer hover:bg-zinc-700 transition-colors select-none max-w-[160px]";
+    minimizeTab.innerHTML = `
+      <span class="truncate flex-1">${title}</span>
+      <button class="tab-close ml-1 text-zinc-500 hover:text-red-500 leading-none cursor-pointer transition-colors" title="Schließen">&#x2715;</button>
+    `;
+
+    minimizeTab.addEventListener("click", (e) => {
+      const target = e.target as HTMLElement;
+      if (target.classList.contains("tab-close")) {
+        win.remove();
+        minimizeTab?.remove();
+        minimizeTab = null;
+        return;
+      }
+      win.style.display = "";
+      win.style.zIndex = String(zIndex++);
+      win.style.opacity = "0";
+      win.style.transform = "scale(0.9) translateY(20px)";
+      win.style.transition = "opacity 0.2s ease, transform 0.2s ease";
+
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          win.style.opacity = "1";
+          win.style.transform = "";
+        });
+      });
+
+      setTimeout(() => {
+        win.style.transition = "";
+      }, 200);
+
+      minimizeTab?.remove();
+      minimizeTab = null;
+    });
+
+    minimizeBar.appendChild(minimizeTab);
   });
 
   let maximized = false;
