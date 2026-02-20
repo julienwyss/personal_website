@@ -1,4 +1,4 @@
-# 🖥️ Julien's OS-Style Portfolio
+# Portfolio Website
 
 Welcome to my interactive, linux desktop themed personal portfolio! This project is designed to look and feel like a modern operating system right in your browser.
 
