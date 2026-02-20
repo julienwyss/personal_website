@@ -2,6 +2,7 @@ name: Update Writeups Submodule
 on:
   repository_dispatch:
     types: [update-writeups-submodule]
+  workflow_dispatch:
 
 jobs:
   update:
@@ -23,3 +24,7 @@ jobs:
           git add .
           git commit -m "chore: auto-update writeups submodule" || echo "No changes to commit"
           git push
+
+      - name: Trigger Astro Build Workflow
+        run: |
+          gh workflow run astro.yml
