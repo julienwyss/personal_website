@@ -1,43 +1,24 @@
-# Astro Starter Kit: Minimal
+# 🖥️ Julien's OS-Style Portfolio
 
-```sh
-npm create astro@latest -- --template minimal
-```
+Welcome to my interactive, linux desktop themed personal portfolio! This project is designed to look and feel like a modern operating system right in your browser.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+**Access the Website:** [julien-wyss.ch](https://julien-wyss.ch/) 
 
-## 🚀 Project Structure
+## Features
 
-Inside of your Astro project, you'll see the following folders and files:
+This portfolio isn't just a static page; it's a fully functional web-based desktop environment:
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+* **Custom Window Manager:** Draggable, resizable, and minimizable application windows tailored for both desktop and mobile views.
+* **Animated Terminal:** A simulated command-line interface featuring animated typing effects, skill progress bars, and tabbed navigation.
+* **CTF Writeup Explorer & Viewer:** A custom-built file explorer that reads dynamically from my Github Repository for CTF WriteUp's and dsiplays them. It renders Markdown files seamlessly using `marked` and includes syntax highlighting.
+* **Image Viewer:** An integrated image viewer with zoom and pan capabilities for challenge screenshots.
+* **CLI Contact Form:** A interactive, terminal-looking contact form wizard powered by Web3Forms.
+* **GitHub & LinkedIn Integrations:** Live fetching of GitHub repositories and language statistics, plus an integrated LinkedIn badge.
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Tech Stack
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+* **Framework:** [Astro](https://astro.build/)
+* **Styling:** [Tailwind CSS v4](https://tailwindcss.com/) & [Flowbite](https://flowbite.com/)
+* **Language:** TypeScript / HTML / CSS
+* **Markdown Parsing:** `marked`, `DOMPurify`, and `highlight.js`
+* **Form Handling:** Web3Forms API
