@@ -206,7 +206,6 @@ export function initContactApp(container: HTMLElement) {
 
                     const apiKey = import.meta.env.PUBLIC_WEB3FORMS_KEY as string;
                     formData.access_key = apiKey;
-                    console.log("API Key:", apiKey);
 
                     setTimeout(() => {
                         if (honeypot && honeypot.value.trim() !== '') {
