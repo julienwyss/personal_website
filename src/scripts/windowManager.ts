@@ -66,6 +66,7 @@ const apps: Record<AppId, () => HTMLElement> = {
   if (!app) return;
 
   const win = app();
+  if (!win) return;
 
   const existingWindows = document.querySelectorAll('.app-window');
 
