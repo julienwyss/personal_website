@@ -1,4 +1,5 @@
 {
+  "generatedAt": "2026-02-20T23:47:15.645Z",
   "profile": {
     "login": "julienwyss",
     "id": 44972519,
@@ -103,14 +104,14 @@
       "releases_url": "https://api.github.com/repos/julienwyss/personal_website/releases{/id}",
       "deployments_url": "https://api.github.com/repos/julienwyss/personal_website/deployments",
       "created_at": "2026-02-06T09:35:26Z",
-      "updated_at": "2026-02-20T22:30:06Z",
-      "pushed_at": "2026-02-20T22:29:59Z",
+      "updated_at": "2026-02-20T23:36:27Z",
+      "pushed_at": "2026-02-20T23:36:24Z",
       "git_url": "git://github.com/julienwyss/personal_website.git",
       "ssh_url": "git@github.com:julienwyss/personal_website.git",
       "clone_url": "https://github.com/julienwyss/personal_website.git",
       "svn_url": "https://github.com/julienwyss/personal_website",
       "homepage": "https://julienwyss.github.io/personal_website/",
-      "size": 465,
+      "size": 466,
       "stargazers_count": 0,
       "watchers_count": 0,
       "language": "TypeScript",
@@ -344,5 +345,15 @@
       "watchers": 0,
       "default_branch": "main"
     }
-  ]
+  ],
+  "languageBytes": {
+    "TypeScript": 49581,
+    "Astro": 21137,
+    "CSS": 2500,
+    "JavaScript": 217,
+    "Batchfile": 6604,
+    "Python": 22297,
+    "Shell": 1182
+  },
+  "languageBytesTotal": 103518
 }
