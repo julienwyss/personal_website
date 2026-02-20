@@ -71,6 +71,9 @@ jobs:
       - name: Generate writeups index
         run: ${{ steps.detect-package-manager.outputs.runner }} tsx src/scripts/generate-writeups-structure.ts
         working-directory: ${{ env.BUILD_PATH }}
+      - name: Generate GitHub data
+        run: ${{ steps.detect-package-manager.outputs.runner }} tsx src/scripts/generate-github-data.ts
+        working-directory: ${{ env.BUILD_PATH }}
       - name: Build with Astro
         run: |
           ${{ steps.detect-package-manager.outputs.runner }} astro build \
