@@ -100,7 +100,7 @@
         "type": "file",
         "path": "Break The Syntax\\Readme.md",
         "extension": ".md",
-        "size": 0
+        "size": 93
       },
       {
         "name": "rev",
@@ -364,6 +364,279 @@
     ]
   },
   {
+    "name": "CyberGame",
+    "type": "directory",
+    "path": "CyberGame",
+    "children": [
+      {
+        "name": "Cryptography",
+        "type": "directory",
+        "path": "CyberGame\\Cryptography",
+        "children": [
+          {
+            "name": "Advanced_Decryption_Standard_-_Blockchain.md",
+            "type": "file",
+            "path": "CyberGame\\Cryptography\\Advanced_Decryption_Standard_-_Blockchain.md",
+            "extension": ".md",
+            "size": 756
+          },
+          {
+            "name": "Advanced_Decryption_Standard_-_Codebook.md",
+            "type": "file",
+            "path": "CyberGame\\Cryptography\\Advanced_Decryption_Standard_-_Codebook.md",
+            "extension": ".md",
+            "size": 1203
+          },
+          {
+            "name": "Advanced_Decryption_Standard_-_easy_like_counting_up_to_three.md",
+            "type": "file",
+            "path": "CyberGame\\Cryptography\\Advanced_Decryption_Standard_-_easy_like_counting_up_to_three.md",
+            "extension": ".md",
+            "size": 736
+          },
+          {
+            "name": "Adversary_-_3AES.md",
+            "type": "file",
+            "path": "CyberGame\\Cryptography\\Adversary_-_3AES.md",
+            "extension": ".md",
+            "size": 4344
+          },
+          {
+            "name": "Adversary_-_Almost_Classic.md",
+            "type": "file",
+            "path": "CyberGame\\Cryptography\\Adversary_-_Almost_Classic.md",
+            "extension": ".md",
+            "size": 1511
+          },
+          {
+            "name": "Adversary_-_Key_exchange.md",
+            "type": "file",
+            "path": "CyberGame\\Cryptography\\Adversary_-_Key_exchange.md",
+            "extension": ".md",
+            "size": 3292
+          },
+          {
+            "name": "images",
+            "type": "directory",
+            "path": "CyberGame\\Cryptography\\images",
+            "children": [
+              {
+                "name": "exchange.png",
+                "type": "file",
+                "path": "CyberGame\\Cryptography\\images\\exchange.png",
+                "extension": ".png",
+                "size": 49304
+              },
+              {
+                "name": "slon_decrypted.png",
+                "type": "file",
+                "path": "CyberGame\\Cryptography\\images\\slon_decrypted.png",
+                "extension": ".png",
+                "size": 183540
+              }
+            ]
+          },
+          {
+            "name": "Ransomware_-_Recovery_1.md",
+            "type": "file",
+            "path": "CyberGame\\Cryptography\\Ransomware_-_Recovery_1.md",
+            "extension": ".md",
+            "size": 7168
+          },
+          {
+            "name": "Readme.md",
+            "type": "file",
+            "path": "CyberGame\\Cryptography\\Readme.md",
+            "extension": ".md",
+            "size": 648
+          }
+        ]
+      },
+      {
+        "name": "Forensics",
+        "type": "directory",
+        "path": "CyberGame\\Forensics",
+        "children": [
+          {
+            "name": "Eugenes_FATigue__Was_that_the_only_file.md",
+            "type": "file",
+            "path": "CyberGame\\Forensics\\Eugenes_FATigue__Was_that_the_only_file.md",
+            "extension": ".md",
+            "size": 1700
+          },
+          {
+            "name": "Eugene’s_FATigue_-_FATigue.md",
+            "type": "file",
+            "path": "CyberGame\\Forensics\\Eugene’s_FATigue_-_FATigue.md",
+            "extension": ".md",
+            "size": 1473
+          },
+          {
+            "name": "Readme.md",
+            "type": "file",
+            "path": "CyberGame\\Forensics\\Readme.md",
+            "extension": ".md",
+            "size": 260
+          }
+        ]
+      },
+      {
+        "name": "Malware Analysis and Reverse Engineering",
+        "type": "directory",
+        "path": "CyberGame\\Malware Analysis and Reverse Engineering",
+        "children": [
+          {
+            "name": "ConnectionChecker_-_Executer.md",
+            "type": "file",
+            "path": "CyberGame\\Malware Analysis and Reverse Engineering\\ConnectionChecker_-_Executer.md",
+            "extension": ".md",
+            "size": 8371
+          },
+          {
+            "name": "ConnectionChecker_-_Lies.md",
+            "type": "file",
+            "path": "CyberGame\\Malware Analysis and Reverse Engineering\\ConnectionChecker_-_Lies.md",
+            "extension": ".md",
+            "size": 919
+          },
+          {
+            "name": "ConnectionChecker_-_Tool.md",
+            "type": "file",
+            "path": "CyberGame\\Malware Analysis and Reverse Engineering\\ConnectionChecker_-_Tool.md",
+            "extension": ".md",
+            "size": 924
+          },
+          {
+            "name": "images",
+            "type": "directory",
+            "path": "CyberGame\\Malware Analysis and Reverse Engineering\\images",
+            "children": [
+              {
+                "name": "Screenshot_214.png",
+                "type": "file",
+                "path": "CyberGame\\Malware Analysis and Reverse Engineering\\images\\Screenshot_214.png",
+                "extension": ".png",
+                "size": 166722
+              },
+              {
+                "name": "Screenshot_216.png",
+                "type": "file",
+                "path": "CyberGame\\Malware Analysis and Reverse Engineering\\images\\Screenshot_216.png",
+                "extension": ".png",
+                "size": 6418
+              },
+              {
+                "name": "Screenshot_217.png",
+                "type": "file",
+                "path": "CyberGame\\Malware Analysis and Reverse Engineering\\images\\Screenshot_217.png",
+                "extension": ".png",
+                "size": 26287
+              },
+              {
+                "name": "Screenshot_218.png",
+                "type": "file",
+                "path": "CyberGame\\Malware Analysis and Reverse Engineering\\images\\Screenshot_218.png",
+                "extension": ".png",
+                "size": 38403
+              }
+            ]
+          },
+          {
+            "name": "Readme.md",
+            "type": "file",
+            "path": "CyberGame\\Malware Analysis and Reverse Engineering\\Readme.md",
+            "extension": ".md",
+            "size": 567
+          },
+          {
+            "name": "SanityChecker_-_Bash_dropper.md",
+            "type": "file",
+            "path": "CyberGame\\Malware Analysis and Reverse Engineering\\SanityChecker_-_Bash_dropper.md",
+            "extension": ".md",
+            "size": 744
+          },
+          {
+            "name": "SanityChecker_-_Password_protected.md",
+            "type": "file",
+            "path": "CyberGame\\Malware Analysis and Reverse Engineering\\SanityChecker_-_Password_protected.md",
+            "extension": ".md",
+            "size": 979
+          },
+          {
+            "name": "SanityChecker_-_Sleepy_python.md",
+            "type": "file",
+            "path": "CyberGame\\Malware Analysis and Reverse Engineering\\SanityChecker_-_Sleepy_python.md",
+            "extension": ".md",
+            "size": 26236
+          }
+        ]
+      },
+      {
+        "name": "Readme.md",
+        "type": "file",
+        "path": "CyberGame\\Readme.md",
+        "extension": ".md",
+        "size": 532
+      },
+      {
+        "name": "Web Exploitation and Binary Exploitation",
+        "type": "directory",
+        "path": "CyberGame\\Web Exploitation and Binary Exploitation",
+        "children": [
+          {
+            "name": "Equestria_-_Door_To_The_Stable.md",
+            "type": "file",
+            "path": "CyberGame\\Web Exploitation and Binary Exploitation\\Equestria_-_Door_To_The_Stable.md",
+            "extension": ".md",
+            "size": 1928
+          },
+          {
+            "name": "Equestria_-_Shadow_Realm.md",
+            "type": "file",
+            "path": "CyberGame\\Web Exploitation and Binary Exploitation\\Equestria_-_Shadow_Realm.md",
+            "extension": ".md",
+            "size": 4167
+          },
+          {
+            "name": "Equestria_-_The_Dark_Ruler.md",
+            "type": "file",
+            "path": "CyberGame\\Web Exploitation and Binary Exploitation\\Equestria_-_The_Dark_Ruler.md",
+            "extension": ".md",
+            "size": 8218
+          },
+          {
+            "name": "images",
+            "type": "directory",
+            "path": "CyberGame\\Web Exploitation and Binary Exploitation\\images",
+            "children": [
+              {
+                "name": "Screenshot_219.png",
+                "type": "file",
+                "path": "CyberGame\\Web Exploitation and Binary Exploitation\\images\\Screenshot_219.png",
+                "extension": ".png",
+                "size": 12362
+              }
+            ]
+          },
+          {
+            "name": "JAILE_-_Calculator.md",
+            "type": "file",
+            "path": "CyberGame\\Web Exploitation and Binary Exploitation\\JAILE_-_Calculator.md",
+            "extension": ".md",
+            "size": 3039
+          },
+          {
+            "name": "Readme.md",
+            "type": "file",
+            "path": "CyberGame\\Web Exploitation and Binary Exploitation\\Readme.md",
+            "extension": ".md",
+            "size": 407
+          }
+        ]
+      }
+    ]
+  },
+  {
     "name": "damctf",
     "type": "directory",
     "path": "damctf",
@@ -450,7 +723,7 @@
         "type": "file",
         "path": "Midnight Sun CTF 2025 Quals\\Readme.md",
         "extension": ".md",
-        "size": 0
+        "size": 74
       }
     ]
   },
@@ -681,6 +954,27 @@
         "path": "Swiss-Hacking-Challenge\\Readme.md",
         "extension": ".md",
         "size": 224
+      },
+      {
+        "name": "Web",
+        "type": "directory",
+        "path": "Swiss-Hacking-Challenge\\Web",
+        "children": [
+          {
+            "name": "cyber-gateway.md",
+            "type": "file",
+            "path": "Swiss-Hacking-Challenge\\Web\\cyber-gateway.md",
+            "extension": ".md",
+            "size": 769
+          },
+          {
+            "name": "Readme.md",
+            "type": "file",
+            "path": "Swiss-Hacking-Challenge\\Web\\Readme.md",
+            "extension": ".md",
+            "size": 144
+          }
+        ]
       }
     ]
   }
