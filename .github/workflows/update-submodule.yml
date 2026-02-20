@@ -15,7 +15,7 @@ jobs:
 
       - name: Update Submodule and Push
         run: |
-          git submodule update --remote --merge
+          git submodule update --remote
           
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
