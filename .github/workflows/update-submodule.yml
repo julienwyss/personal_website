@@ -1,0 +1,25 @@
+name: Update Writeups Submodule
+on:
+  repository_dispatch:
+    types: [update-writeups-submodule]
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+          token: ${{ secrets.PAT_TOKEN }}
+
+      - name: Update Submodule and Push
+        run: |
+          git submodule update --remote --merge
+          
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          git add .
+          git commit -m "chore: auto-update writeups submodule" || echo "No changes to commit"
+          git push
