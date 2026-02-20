@@ -7,6 +7,6 @@ export default defineConfig({
     plugins: [tailwindcss()]
   },
 
-  site: 'https://julienwyss.github.io/personal_website/',
-  base: import.meta.env.PROD ? '/' : '/'
+  site: 'https://julien-wyss.ch/',
+  base: '/'
 });
