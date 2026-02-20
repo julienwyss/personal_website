@@ -11,6 +11,17 @@
   display: inline-block;
 }
 
+.terminal-typewriter.has-cursor::after {
+  content: '';
+  display: inline-block;
+  background-color: #10b981;
+  width: 8px;
+  height: 1em;
+  margin-left: 2px;
+  vertical-align: middle;
+  animation: blink 1s infinite;
+}
+
 .terminal-cursor {
   display: inline-block;
   background-color: #10b981;

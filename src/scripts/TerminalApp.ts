@@ -136,12 +136,11 @@ class TypewriterRenderer {
     element.appendChild(textSpan);
 
     if (!config.text) {
-      if (permanentCursor) element.appendChild(this.createCursor());
+      if (permanentCursor) textSpan.classList.add('has-cursor');
       return;
     }
 
-    const cursor = this.createCursor();
-    element.appendChild(cursor);
+    textSpan.classList.add('has-cursor');
 
     let index = 0;
 
@@ -150,8 +149,9 @@ class TypewriterRenderer {
         textSpan.textContent = config.text.slice(0, ++index);
       } else {
         animationManager.clearInterval(interval);
-        cursor.remove();
-        if (permanentCursor) element.appendChild(this.createCursor());
+        if (!permanentCursor) {
+          textSpan.classList.remove('has-cursor');
+        }
       }
     }, TYPING_SPEED);
   }
@@ -267,10 +267,6 @@ class TypewriterRenderer {
     span.className = className;
     span.textContent = text;
     return span;
-  }
-
-  private createCursor(): HTMLSpanElement {
-    return this.createSpan('_', 'terminal-cursor');
   }
 
   private random(min: number, max: number): number {
