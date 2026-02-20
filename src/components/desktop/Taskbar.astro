@@ -20,22 +20,15 @@ import ToolTips from "../utils/ToolTips.astro";
     <span class="text-red-500">></span><span class="text-white">_</span>
   </button>
   <button
-    data-tooltip-target="tooltip-linkedin"
+    data-tooltip-target="tooltip-writeups"
     data-tooltip-placement="right"
     type="button"
-    class="w-10 h-10 rounded-md bg-zinc-700 hover:bg-zinc-600 text-zinc-200 flex items-center justify-center cursor-pointer"
-    onclick="window.openApp('linkedin')"
+    class="w-10 h-10 rounded-md bg-zinc-700 hover:bg-zinc-600 text-zinc-200 flex items-center justify-center cursor-pointer transition-colors"
+    onclick="window.openApp('explorer')"
   >
-    <img src={`${import.meta.env.BASE_URL}linkedin-logo-white.png`} alt="LinkedIn Logo" class="w-full h-full object-cover rounded-md" />
-  </button>
-  <button
-    data-tooltip-target="tooltip-github"
-    data-tooltip-placement="right"
-    type="button"
-    class="w-10 h-10 rounded-md bg-zinc-700 hover:bg-zinc-600 text-zinc-200 flex items-center justify-center cursor-pointer"
-    onclick="window.openApp('github')"
-  >
-    <img src={`${import.meta.env.BASE_URL}github-logo-inverted.svg`} alt="GitHub Logo" class="w-full h-full object-cover rounded-md" />
+    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#facc15" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 5px #facc15aa);">
+      <path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 2H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"></path>
+    </svg>
   </button>
   <button
     data-tooltip-target="tooltip-contact"
@@ -50,23 +43,22 @@ import ToolTips from "../utils/ToolTips.astro";
     </svg>
   </button>
   <button
-    data-tooltip-target="tooltip-writeups"
+    data-tooltip-target="tooltip-github"
     data-tooltip-placement="right"
     type="button"
-    class="w-10 h-10 rounded-md bg-zinc-700 hover:bg-zinc-600 text-zinc-200 flex items-center justify-center cursor-pointer transition-colors"
-    onclick="window.openApp('explorer')"
+    class="w-10 h-10 rounded-md bg-zinc-700 hover:bg-zinc-600 text-zinc-200 flex items-center justify-center cursor-pointer"
+    onclick="window.openApp('github')"
   >
-    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#facc15" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 5px #facc15aa);">
-      <path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 2H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"></path>
-    </svg>
+    <img src={`${import.meta.env.BASE_URL}github-logo-inverted.svg`} alt="GitHub Logo" class="w-full h-full object-cover rounded-md" />
   </button>
-  <div
-    id="tooltip-writeups"
-    role="tooltip"
-    class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip"
+  <button
+    data-tooltip-target="tooltip-linkedin"
+    data-tooltip-placement="right"
+    type="button"
+    class="w-10 h-10 rounded-md bg-zinc-700 hover:bg-zinc-600 text-zinc-200 flex items-center justify-center cursor-pointer"
+    onclick="window.openApp('linkedin')"
   >
-    CTF Writeups
-    <div class="tooltip-arrow" data-popper-arrow></div>
-  </div>
+    <img src={`${import.meta.env.BASE_URL}linkedin-logo-white.png`} alt="LinkedIn Logo" class="w-full h-full object-cover rounded-md" />
+  </button>
   <ToolTips />
 </div>
