@@ -32,7 +32,6 @@ class AnimationManager {
   }
 }
 
-const animationManager = new AnimationManager();
 const TYPING_SPEED = 45;
 
 interface LineConfig {
@@ -44,10 +43,16 @@ interface LineConfig {
 }
 
 class TypewriterRenderer {
+  private animationManager = new AnimationManager();
+
   constructor(private container: HTMLElement) {}
 
+  stop(): void {
+    this.animationManager.clearAll();
+  }
+
   run(): void {
-    animationManager.clearAll();
+    this.animationManager.clearAll();
 
     const lines = this.getLines();
     const progressBars = this.getProgressBars();
@@ -96,7 +101,7 @@ class TypewriterRenderer {
     lines.forEach(line => {
       const config = this.getLineConfig(line);
 
-      animationManager.setTimeout(() => {
+      this.animationManager.setTimeout(() => {
         this.renderTypingLine(line, config);
       }, delay);
 
@@ -112,7 +117,7 @@ class TypewriterRenderer {
     lines.forEach(line => {
       const config = this.getLineConfig(line);
 
-      animationManager.setTimeout(() => {
+      this.animationManager.setTimeout(() => {
         this.renderTypingLine(line, config, true);
       }, delay);
 
@@ -144,11 +149,11 @@ class TypewriterRenderer {
 
     let index = 0;
 
-    const interval = animationManager.setInterval(() => {
+    const interval = this.animationManager.setInterval(() => {
       if (index < config.text.length) {
         textSpan.textContent = config.text.slice(0, ++index);
       } else {
-        animationManager.clearInterval(interval);
+        this.animationManager.clearInterval(interval);
         if (!permanentCursor) {
           textSpan.classList.remove('has-cursor');
         }
@@ -175,12 +180,12 @@ class TypewriterRenderer {
 
       maxTime = Math.max(maxTime, animationTime);
 
-      animationManager.setTimeout(
+      this.animationManager.setTimeout(
         () => this.setupProgressBar(bar, skill, width),
         setupDelay
       );
 
-      animationManager.setTimeout(
+      this.animationManager.setTimeout(
         () =>
           this.animateProgressBar(bar, filledLength, width, level, fillSpeed),
         fillDelay
@@ -228,7 +233,7 @@ class TypewriterRenderer {
 
     let current = 0;
 
-    const interval = animationManager.setInterval(() => {
+    const interval = this.animationManager.setInterval(() => {
       if (current <= filledLength) {
         barSpan.textContent =
           '|'.repeat(current) +
@@ -242,7 +247,7 @@ class TypewriterRenderer {
         ratingSpan.textContent = `${normalized}/5`;
         current++;
       } else {
-        animationManager.clearInterval(interval);
+        this.animationManager.clearInterval(interval);
         barSpan.textContent =
           '|'.repeat(filledLength) +
           '\u00A0'.repeat(Math.max(0, width - filledLength));
@@ -274,8 +279,22 @@ class TypewriterRenderer {
   }
 }
 
+const typewriterRenderers = new WeakMap<HTMLElement, TypewriterRenderer>();
+
+function getTypewriterRenderer(container: HTMLElement): TypewriterRenderer {
+  const existing = typewriterRenderers.get(container);
+  if (existing) return existing;
+
+  const created = new TypewriterRenderer(container);
+  typewriterRenderers.set(container, created);
+  return created;
+}
+
 (window as any).typewriterEffect = (container: HTMLElement) =>
-  new TypewriterRenderer(container).run();
+  getTypewriterRenderer(container).run();
+
+(window as any).stopTypewriterEffect = (container: HTMLElement) =>
+  typewriterRenderers.get(container)?.stop();
 
 class TabController {
   constructor() {
@@ -310,6 +329,7 @@ class TabController {
     });
 
     app.querySelectorAll('.tab-content').forEach(content => {
+      (window as any).stopTypewriterEffect?.(content);
       content.classList.add('hidden');
       content
         .querySelectorAll<HTMLElement>(
