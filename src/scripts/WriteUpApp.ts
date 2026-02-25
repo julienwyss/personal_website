@@ -224,16 +224,48 @@ export async function initWriteupViewer(container: HTMLElement, filePath: string
     }
 }
 
-export function initImageViewer(container: HTMLElement, filePath: string) {
-    const titleEl = container.querySelector('#image-viewer-title') as HTMLElement;
-    const contentEl = container.querySelector('#image-viewer-content') as HTMLElement;
-    const cleanPath = filePath.replace(/\\/g, '/');
+type ImageViewerArgs =
+    | string
+    | {
+        src?: string;
+        filePath?: string;
+        title?: string;
+    };
+
+export function initImageViewer(container: HTMLElement, args: ImageViewerArgs) {
+    const titleEl = container.querySelector('#image-viewer-title') as HTMLElement | null;
+    const contentEl = container.querySelector('#image-viewer-content') as HTMLElement | null;
+
+    const rawPath =
+        typeof args === 'string'
+            ? args
+            : (args.src ?? args.filePath);
+
+    if (typeof rawPath !== 'string') {
+        console.error('initImageViewer: expected string path or {src}', args);
+        if (titleEl) titleEl.textContent = 'Invalid image';
+        if (contentEl) contentEl.textContent = 'Could not load image: invalid path.';
+        return;
+    }
+
+    const cleanPath = rawPath.replace(/\\/g, '/');
     const encodePath = (p: string) => p.split('/').map(encodeURIComponent).join('/');
     const fileName = cleanPath.split('/').pop() || '';
-    titleEl.textContent = fileName;
-    const imgUrl = cleanPath.startsWith('http') || cleanPath.startsWith('//')
+    const requestedTitle = typeof args === 'string' ? undefined : args.title;
+    if (titleEl) titleEl.textContent = requestedTitle || fileName;
+
+    const baseUrl = import.meta.env.BASE_URL;
+    const isRemote = cleanPath.startsWith('http') || cleanPath.startsWith('//');
+    const isDataOrBlob = cleanPath.startsWith('data:') || cleanPath.startsWith('blob:');
+    const isAlreadyResolved = cleanPath.startsWith(baseUrl);
+    const imgUrl = (isRemote || isDataOrBlob || isAlreadyResolved)
         ? cleanPath
-        : `${import.meta.env.BASE_URL}writeups/${encodePath(cleanPath)}`;
+        : `${baseUrl}writeups/${encodePath(cleanPath)}`;
+
+    if (!contentEl) {
+        console.error('initImageViewer: missing #image-viewer-content in container');
+        return;
+    }
 
     const wrapper = document.createElement('div');
     wrapper.style.width = '100%';

@@ -1,5 +1,10 @@
 ---
 import ToolTips from "../utils/ToolTips.astro";
+
+const baseUrl = import.meta.env.BASE_URL;
+const profilePictureSrc = `${baseUrl}ProfilePicture.jpg`;
+const githubLogoSrc = `${baseUrl}github-logo-inverted.svg`;
+const linkedinLogoSrc = `${baseUrl}linkedin-logo-white.png`;
 ---
 
 <div id="taskbar" class="bg-zinc-800 border-zinc-700 flex items-center gap-4">
@@ -7,8 +12,9 @@ import ToolTips from "../utils/ToolTips.astro";
     data-tooltip-target="tooltip-profile-picture"
     data-tooltip-placement="right"
     class="w-10 h-10 rounded-md bg-zinc-700 hover:bg-zinc-600 text-zinc-200 flex items-center justify-center"
+    onclick={`window.openApp('image-viewer', { src: '${profilePictureSrc}', title: 'Profile Picture' })`}
   >
-    <img src={`${import.meta.env.BASE_URL}ProfilePicture.jpg`} alt="Profile Picture" class="w-full h-full object-cover rounded-md" />
+    <img src={profilePictureSrc} alt="Profile Picture" class="w-full h-full object-cover rounded-md" />
   </button>
   <button
     data-tooltip-target="tooltip-terminal"
@@ -49,7 +55,7 @@ import ToolTips from "../utils/ToolTips.astro";
     class="w-10 h-10 rounded-md bg-zinc-700 hover:bg-zinc-600 text-zinc-200 flex items-center justify-center cursor-pointer"
     onclick="window.openApp('github')"
   >
-    <img src={`${import.meta.env.BASE_URL}github-logo-inverted.svg`} alt="GitHub Logo" class="w-full h-full object-cover rounded-md" />
+    <img src={githubLogoSrc} alt="GitHub Logo" class="w-full h-full object-cover rounded-md" />
   </button>
   <button
     data-tooltip-target="tooltip-linkedin"
@@ -58,7 +64,7 @@ import ToolTips from "../utils/ToolTips.astro";
     class="w-10 h-10 rounded-md bg-zinc-700 hover:bg-zinc-600 text-zinc-200 flex items-center justify-center cursor-pointer"
     onclick="window.openApp('linkedin')"
   >
-    <img src={`${import.meta.env.BASE_URL}linkedin-logo-white.png`} alt="LinkedIn Logo" class="w-full h-full object-cover rounded-md" />
+    <img src={linkedinLogoSrc} alt="LinkedIn Logo" class="w-full h-full object-cover rounded-md" />
   </button>
   <ToolTips />
 </div>
