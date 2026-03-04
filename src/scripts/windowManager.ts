@@ -129,29 +129,6 @@ const apps: Record<AppId, () => HTMLElement> = {
     initContactApp(win);
   }
 
-  if (appId === 'linkedin') {
-    const container = win.querySelector('.linkedin-container');
-    if (container) {
-      const badge = document.createElement('div');
-      badge.className = 'badge-base LI-profile-badge';
-      badge.setAttribute('data-locale', 'de_DE');
-      badge.setAttribute('data-size', 'large');
-      badge.setAttribute('data-theme', 'dark');
-      badge.setAttribute('data-type', 'HORIZONTAL');
-      badge.setAttribute('data-vanity', 'julien-wyss-39004028b');
-      badge.setAttribute('data-version', 'v1');
-
-      badge.style.display = 'block';
-      badge.style.margin = '0 auto';
-
-      container.appendChild(badge);
-
-      if ((window as any).LIRenderAll) {
-        (window as any).LIRenderAll();
-      }
-    }
-  }
-
   if (appId === 'explorer') {
     initExplorer(win, args);
   }

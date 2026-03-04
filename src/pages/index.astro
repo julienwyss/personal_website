@@ -10,12 +10,11 @@ import "../styles/global.css";
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content" />
     <meta http-equiv="Content-Security-Policy" content="
       default-src 'self';
-      script-src 'self' *.linkedin.com *.licdn.com 'unsafe-inline';
-      connect-src 'self' api.web3forms.com *.linkedin.com *.licdn.com;
+      script-src 'self' 'unsafe-inline';
+      connect-src 'self' api.web3forms.com;
       img-src 'self' data: https:;
-      style-src 'self' 'unsafe-inline' *.linkedin.com *.licdn.com fonts.googleapis.com;
-      font-src 'self' data: *.linkedin.com *.licdn.com fonts.gstatic.com;
-      frame-src *.linkedin.com;
+      style-src 'self' 'unsafe-inline' fonts.googleapis.com;
+      font-src 'self' data: fonts.gstatic.com;
       object-src 'none';
     " />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -29,7 +28,6 @@ import "../styles/global.css";
     <meta property="og:image" content="https://julien-wyss.ch/ProfilePicture.jpg" />
 
     <meta name="robots" content="index, follow" />
-    <script src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",

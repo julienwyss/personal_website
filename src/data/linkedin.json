@@ -1,0 +1,53 @@
+{
+  "name": "Julien Wyss",
+  "headline": "In Ausbildung/Studium: ZHAW Zürcher Hochschule für Angewandte Wissenschaften",
+  "location": "Winterthur, Zürich, Schweiz",
+  "about": "",
+  "profile_url": "https://www.linkedin.com/in/julien-wyss-39004028b",
+  "avatar_url": "https://julien-wyss.ch/ProfilePicture.jpg",
+  "experience": [
+    {
+      "company": "Casasoft AG",
+      "title": "Webentwickler",
+      "duration": "Januar 2023 – August 2023 (8 Monate)",
+      "location": "Zürich, Schweiz",
+      "description": ""
+    },
+    {
+      "company": "Schweizer Armee",
+      "title": "Funkaufklärer",
+      "duration": "Juli 2022 – November 2022 (5 Monate)",
+      "location": "Jassbach",
+      "description": ""
+    },
+    {
+      "company": "Casasoft AG",
+      "title": "Lehre als Informatiker EFZ Applikationsentwicklung",
+      "duration": "August 2018 – August 2022 (4 Jahre 1 Monat)",
+      "location": "Bottighofen, Thurgau, Schweiz",
+      "description": ""
+    }
+  ],
+  "education": [
+    {
+      "school": "ZHAW Zürcher Hochschule für Angewandte Wissenschaften",
+      "degree": "Bachelor of Science",
+      "field": "Computer Science",
+      "duration": "September 2023 – Juni 2026"
+    },
+    {
+      "school": "Bildungszentrum für Technik BZT Frauenfeld",
+      "degree": "Informatiker EFZ",
+      "field": "Applikationsentwicklung",
+      "duration": "August 2018 – Juli 2022"
+    },
+    {
+      "school": "Bildungszentrum für Technik BZT Frauenfeld",
+      "degree": "Berufsmaturität",
+      "field": "Technik, Architektur, Life Sciences",
+      "duration": "August 2018 – Juli 2022"
+    }
+  ],
+  "certifications": [],
+  "skills": []
+}
