@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://julien-wyss.ch/sitemap-index.xml

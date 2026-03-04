@@ -18,10 +18,35 @@ import "../styles/global.css";
       frame-src *.linkedin.com;
       object-src 'none';
     " />
-    <title>Portfolio</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Julien Wyss | Cybersecurity & Software Engineering Portfolio</title>
+    <meta name="description" content="Personal portfolio of Julien Wyss. Explore my interactive desktop environment, CTF writeups, software engineering projects, and cybersecurity skills." />
+    
+    <meta property="og:title" content="Julien Wyss | Portfolio" />
+    <meta property="og:description" content="Personal portfolio of Julien Wyss. Explore my CTF writeups and projects." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://julien-wyss.ch/" />
+    <meta property="og:image" content="https://julien-wyss.ch/ProfilePicture.jpg" />
+
+    <meta name="robots" content="index, follow" />
     <script src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Julien Wyss",
+      "url": "https://julien-wyss.ch",
+      "image": "https://julien-wyss.ch/ProfilePicture.jpg",
+      "jobTitle": "Cybersecurity Enthusiast & Software Engineer",
+      "sameAs": [
+        "https://github.com/julienwyss",
+        "https://www.linkedin.com/in/julien-wyss-39004028b",
+      ]
+    }
+    </script>
   </head>
   <body>
+    <h1 class="sr-only">Julien Wyss - Cybersecurity and Software Engineering Portfolio</h1>
     <DesktopShell />
   </body>
 </html>

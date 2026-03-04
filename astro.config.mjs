@@ -1,6 +1,6 @@
 import { defineConfig } from 'astro/config';
-
 import tailwindcss from '@tailwindcss/vite';
+import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   vite: {
@@ -8,5 +8,6 @@ export default defineConfig({
   },
 
   site: 'https://julien-wyss.ch/',
-  base: '/'
+  base: '/',
+  integrations: [sitemap()]
 });
