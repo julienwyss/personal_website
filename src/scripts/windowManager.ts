@@ -1,8 +1,9 @@
-type AppId = "terminal" | "linkedin" | "github" | "contact" | "explorer" | "writeup-viewer" | "image-viewer";
+type AppId = "terminal" | "linkedin" | "github" | "contact" | "explorer" | "writeup-viewer" | "image-viewer" | "help";
 import { initContactApp } from './ContactApp';
 import { initExplorer } from './WriteUpApp';
 import { initWriteupViewer } from './WriteUpApp';
 import { initImageViewer } from './WriteUpApp';
+import { initHelpApp } from './HelpApp';
 
 let zIndex = 10;
 const app_open_start_left = 100;
@@ -57,6 +58,11 @@ const apps: Record<AppId, () => HTMLElement> = {
   "image-viewer": () => {
     const wrapper = document.createElement("div");
     wrapper.innerHTML = document.getElementById("image-viewer-template")?.innerHTML || "";
+    return wrapper.firstElementChild as HTMLElement;
+  },
+  "help": () => {
+    const wrapper = document.createElement("div");
+    wrapper.innerHTML = document.getElementById("help-template")?.innerHTML || "";
     return wrapper.firstElementChild as HTMLElement;
   },
 };
@@ -155,6 +161,9 @@ const apps: Record<AppId, () => HTMLElement> = {
   }
   if (appId === 'image-viewer') {
     initImageViewer(win, args);
+  }
+  if (appId === 'help') {
+    initHelpApp(win);
   }
   enableWindowControls(win);
 };
@@ -388,6 +397,11 @@ function enableResize(win: HTMLElement) {
       resizing = false;
     });
   });
+}
+
+if (!localStorage.getItem('help-seen')) {
+  localStorage.setItem('help-seen', '1');
+  window.setTimeout(() => (window as any).openApp('help'), 400);
 }
 
 import('flowbite').then(({ initFlowbite }) => {

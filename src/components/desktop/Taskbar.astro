@@ -66,5 +66,49 @@ const linkedinLogoSrc = `${baseUrl}linkedin-logo-white.png`;
   >
     <img src={linkedinLogoSrc} alt="LinkedIn Logo" class="w-full h-full object-cover rounded-md" />
   </button>
+  <button
+    data-tooltip-target="tooltip-help"
+    data-tooltip-placement="right"
+    type="button"
+    class="w-10 h-10 rounded-md bg-zinc-700 hover:bg-zinc-600 flex items-center justify-center cursor-pointer font-black text-xl"
+    onclick="window.openApp('help')"
+    style="color: #ff2233; text-shadow: 0 0 8px #ff2233, 0 0 16px #ff2233;"
+  >
+    ?
+  </button>
   <ToolTips />
 </div>
+
+<script>
+  function updateTaskbarLayout() {
+    const taskbar = document.getElementById('taskbar');
+    if (!taskbar) return;
+
+    if (window.innerWidth >= 768) {
+      taskbar.style.gap = '';
+      return;
+    }
+
+    const buttons = Array.from(taskbar.querySelectorAll('button'));
+    const buttonCount = buttons.length;
+    if (buttonCount === 0) return;
+
+    const buttonSize = 44;
+    const paddingH = 16;
+    const minGap = 6;
+    const available = taskbar.clientWidth - paddingH * 2;
+    const totalButtonWidth = buttonCount * buttonSize;
+    const totalMinGap = (buttonCount - 1) * minGap;
+
+    if (totalButtonWidth + totalMinGap <= available) {
+      const extraSpace = available - totalButtonWidth;
+      const gap = extraSpace / (buttonCount - 1 || 1);
+      taskbar.style.gap = `${gap}px`;
+    } else {
+      taskbar.style.gap = `${minGap}px`;
+    }
+  }
+
+  window.addEventListener('load', updateTaskbarLayout);
+  window.addEventListener('resize', updateTaskbarLayout);
+</script>

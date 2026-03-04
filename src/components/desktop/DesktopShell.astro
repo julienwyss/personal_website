@@ -8,6 +8,7 @@ import ContactApp from "../apps/ContactApp.astro";
 import WriteupExplorer from "../apps/WriteupExplorer.astro";
 import WriteupViewer from "../apps/WriteupViewer.astro";
 import ImageViewer from "../apps/ImageViewer.astro";
+import HelpApp from "../apps/HelpApp.astro";
 ---
 
 <div id="desktop" class="fixed inset-0 h-dvh bg-zinc-900 overflow-hidden font-mono">
@@ -53,5 +54,10 @@ import ImageViewer from "../apps/ImageViewer.astro";
     <AppWindow title="Image Viewer" appId="image-viewer">
         <ImageViewer />
     </AppWindow>
+</div>
+<div id="help-template" class="hidden">
+  <AppWindow title="Help & Welcome" appId="help">
+    <HelpApp />
+  </AppWindow>
 </div>
 <script src="../../scripts/windowManager.ts"></script>
