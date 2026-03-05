@@ -94,29 +94,39 @@ export function initHelpApp(container: HTMLElement) {
 
     window.setTimeout(() => {
       const div = document.createElement('div');
-      div.className = 'flex items-baseline gap-2';
       historyEl.appendChild(div);
 
       if (line.isCommand) {
+        div.className = 'flex items-baseline gap-2';
         const prompt = document.createElement('span');
         prompt.className = 'text-green-400 shrink-0';
         prompt.textContent = 'user@portfolio:~$';
         div.appendChild(prompt);
       }
 
+      const leadingSpaces = line.text.match(/^ */)?.[0].length ?? 0;
+      const textContent = line.text.slice(leadingSpaces);
+
       const textSpan = document.createElement('span');
-      textSpan.className = line.color ?? 'text-zinc-400';
-      textSpan.style.whiteSpace = 'pre';
+      textSpan.className = (line.color ?? 'text-zinc-400') + ' break-words min-w-0';
+      textSpan.style.whiteSpace = 'pre-wrap';
+      if (leadingSpaces > 0) {
+        textSpan.style.display = 'block';
+        textSpan.style.paddingLeft = `${leadingSpaces}ch`;
+      }
       div.appendChild(textSpan);
 
       const cursor = document.createElement('span');
       cursor.className = 'inline-block w-2 h-4 bg-zinc-400 ml-1 align-middle';
-      div.appendChild(cursor);
+
+      const textNode = document.createTextNode('');
+      textSpan.appendChild(textNode);
+      textSpan.appendChild(cursor);
 
       let i = 0;
       const iv = window.setInterval(() => {
-        if (i < line.text.length) {
-          textSpan.textContent = line.text.slice(0, ++i);
+        if (i < textContent.length) {
+          textNode.nodeValue = textContent.slice(0, ++i);
           terminal.scrollTop = terminal.scrollHeight;
         } else {
           window.clearInterval(iv);
