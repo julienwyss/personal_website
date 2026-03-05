@@ -37,9 +37,10 @@ const HELP_LINES_DESKTOP: HelpLine[] = [
 const HELP_LINES_MOBILE: HelpLine[] = [
   { text: 'willkommen.sh', isCommand: true },
   { text: '' },
-  { text: '┌─────────────────────────────────────────┐', color: 'text-red-500' },
-  { text: '│       WILLKOMMEN AUF MEINEM PORTFOLIO   │', color: 'text-red-500' },
-  { text: '└─────────────────────────────────────────┘', color: 'text-red-500' },
+  { text: '┌──────────────────────┐', color: 'text-red-500' },
+  { text: '│  WILLKOMMEN AUF      │', color: 'text-red-500' },
+  { text: '│  MEINEM PORTFOLIO    │', color: 'text-red-500' },
+  { text: '└──────────────────────┘', color: 'text-red-500' },
   { text: '' },
   { text: 'Diese Seite funktioniert wie ein Desktop Betriebssystem.', color: 'text-zinc-300' },
   { text: 'Tippe auf ein Icon in der unteren Taskleiste, um eine App zu öffnen.', color: 'text-zinc-300' },
