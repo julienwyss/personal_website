@@ -9,6 +9,7 @@ import WriteupExplorer from "../apps/WriteupExplorer.astro";
 import WriteupViewer from "../apps/WriteupViewer.astro";
 import ImageViewer from "../apps/ImageViewer.astro";
 import HelpApp from "../apps/HelpApp.astro";
+import CTFtimeApp from "../apps/CTFtimeApp.astro";
 ---
 
 <div id="desktop" class="fixed inset-0 h-dvh bg-zinc-900 overflow-hidden font-mono">
@@ -58,6 +59,11 @@ import HelpApp from "../apps/HelpApp.astro";
 <div id="help-template" class="hidden">
   <AppWindow title="Help & Welcome" appId="help">
     <HelpApp />
+  </AppWindow>
+</div>
+<div id="ctftime-template" class="hidden">
+  <AppWindow title="CTFtime" appId="ctftime">
+    <CTFtimeApp />
   </AppWindow>
 </div>
 <script src="../../scripts/windowManager.ts"></script>

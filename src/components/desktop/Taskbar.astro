@@ -49,6 +49,18 @@ const linkedinLogoSrc = `${baseUrl}linkedin-logo-white.png`;
     </svg>
   </button>
   <button
+    data-tooltip-target="tooltip-ctftime"
+    data-tooltip-placement="right"
+    type="button"
+    class="w-10 h-10 rounded-md bg-zinc-700 hover:bg-zinc-600 text-zinc-200 flex items-center justify-center cursor-pointer"
+    onclick="window.openApp('ctftime')"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ff003c" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 4px #ff003caa);">
+      <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path>
+      <line x1="4" y1="22" x2="4" y2="15"></line>
+    </svg>
+  </button>
+  <button
     data-tooltip-target="tooltip-github"
     data-tooltip-placement="right"
     type="button"
@@ -94,18 +106,15 @@ const linkedinLogoSrc = `${baseUrl}linkedin-logo-white.png`;
     if (buttonCount === 0) return;
 
     const buttonSize = 44;
-    const paddingH = 16;
-    const minGap = 6;
+    const paddingH = 4;
+    const fixedGap = 4;
     const available = taskbar.clientWidth - paddingH * 2;
     const totalButtonWidth = buttonCount * buttonSize;
-    const totalMinGap = (buttonCount - 1) * minGap;
 
-    if (totalButtonWidth + totalMinGap <= available) {
-      const extraSpace = available - totalButtonWidth;
-      const gap = extraSpace / (buttonCount - 1 || 1);
-      taskbar.style.gap = `${gap}px`;
+    if (totalButtonWidth <= available) {
+      taskbar.style.gap = '0px';
     } else {
-      taskbar.style.gap = `${minGap}px`;
+      taskbar.style.gap = `${fixedGap}px`;
     }
   }
 

@@ -1,4 +1,4 @@
-type AppId = "terminal" | "linkedin" | "github" | "contact" | "explorer" | "writeup-viewer" | "image-viewer" | "help";
+type AppId = "terminal" | "linkedin" | "github" | "contact" | "explorer" | "writeup-viewer" | "image-viewer" | "help" | "ctftime";
 import { initContactApp } from './ContactApp';
 import { initExplorer } from './WriteUpApp';
 import { initWriteupViewer } from './WriteUpApp';
@@ -63,6 +63,11 @@ const apps: Record<AppId, () => HTMLElement> = {
   "help": () => {
     const wrapper = document.createElement("div");
     wrapper.innerHTML = document.getElementById("help-template")?.innerHTML || "";
+    return wrapper.firstElementChild as HTMLElement;
+  },
+  "ctftime": () => {
+    const wrapper = document.createElement("div");
+    wrapper.innerHTML = document.getElementById("ctftime-template")?.innerHTML || "";
     return wrapper.firstElementChild as HTMLElement;
   },
 };

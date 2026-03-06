@@ -1,0 +1,258 @@
+{
+  "generatedAt": "2026-03-06T13:28:30.362Z",
+  "handle": "R3d_4lch3m1st",
+  "real_name": "Julien Wyss",
+  "profile_url": "https://ctftime.org/user/225872",
+  "member_since": "Mai 2025",
+  "teams": [
+    {
+      "id": 383106,
+      "name": "Fondue Overflow",
+      "url": "https://ctftime.org/team/383106",
+      "country": "CH",
+      "website": null,
+      "rating": {
+        "2011": {},
+        "2012": {
+          "country_place": 3
+        },
+        "2013": {
+          "country_place": 4
+        },
+        "2014": {
+          "country_place": 6
+        },
+        "2015": {
+          "country_place": 9
+        },
+        "2016": {
+          "country_place": 7
+        },
+        "2017": {
+          "country_place": 9
+        },
+        "2018": {
+          "country_place": 13
+        },
+        "2019": {
+          "country_place": 16
+        },
+        "2020": {
+          "country_place": 11
+        },
+        "2021": {
+          "country_place": 11
+        },
+        "2022": {
+          "country_place": 12
+        },
+        "2023": {
+          "country_place": 12
+        },
+        "2024": {
+          "country_place": 10
+        },
+        "2025": {
+          "country_place": 7
+        },
+        "2026": {
+          "country_place": 2
+        }
+      },
+      "aliases": []
+    },
+    {
+      "id": 382455,
+      "name": "FRHACK",
+      "url": "https://ctftime.org/team/382455",
+      "country": "CH",
+      "website": null,
+      "rating": {
+        "2011": {},
+        "2012": {
+          "country_place": 3
+        },
+        "2013": {
+          "country_place": 4
+        },
+        "2014": {
+          "country_place": 6
+        },
+        "2015": {
+          "country_place": 9
+        },
+        "2016": {
+          "country_place": 7
+        },
+        "2017": {
+          "country_place": 9
+        },
+        "2018": {
+          "country_place": 13
+        },
+        "2019": {
+          "country_place": 16
+        },
+        "2020": {
+          "country_place": 11
+        },
+        "2021": {
+          "country_place": 11
+        },
+        "2022": {
+          "country_place": 12
+        },
+        "2023": {
+          "country_place": 12
+        },
+        "2024": {
+          "country_place": 10
+        },
+        "2025": {
+          "country_place": 7
+        },
+        "2026": {
+          "country_place": 2
+        }
+      },
+      "aliases": []
+    }
+  ],
+  "events": [
+    {
+      "id": 2854,
+      "name": "WatCTF F25",
+      "url": "https://ctftime.org/event/2854",
+      "ctf_url": "https://watctf.org/",
+      "format": "Jeopardy",
+      "location": "",
+      "start": "2025-09-09T19:00:00+00:00",
+      "finish": "2025-09-11T19:00:00+00:00",
+      "weight": 23.04,
+      "team_id": 383106,
+      "team_name": "Fondue Overflow",
+      "place": 195,
+      "points": "351.0000"
+    },
+    {
+      "id": 2809,
+      "name": "TJCTF 2025",
+      "url": "https://ctftime.org/event/2809",
+      "ctf_url": "https://tjctf.org/",
+      "format": "Jeopardy",
+      "location": "",
+      "start": "2025-06-06T12:00:00+00:00",
+      "finish": "2025-06-08T12:00:00+00:00",
+      "weight": 51.29,
+      "team_id": 383106,
+      "team_name": "Fondue Overflow",
+      "place": 153,
+      "points": "3979.0000"
+    },
+    {
+      "id": 2486,
+      "name": "N0PSctf",
+      "url": "https://ctftime.org/event/2486",
+      "ctf_url": "https://ctf.nops.re/",
+      "format": "Jeopardy",
+      "location": "",
+      "start": "2025-05-31T08:00:00+00:00",
+      "finish": "2025-06-01T20:00:00+00:00",
+      "weight": 24.34,
+      "team_id": 383106,
+      "team_name": "Fondue Overflow",
+      "place": 623,
+      "points": "300.0000"
+    },
+    {
+      "id": 2782,
+      "name": "NahamCon CTF 2025",
+      "url": "https://ctftime.org/event/2782",
+      "ctf_url": "https://ctf.nahamcon.com/",
+      "format": "Jeopardy",
+      "location": "",
+      "start": "2025-05-23T19:00:00+00:00",
+      "finish": "2025-05-25T19:00:00+00:00",
+      "weight": 53.77,
+      "team_id": 383106,
+      "team_name": "Fondue Overflow",
+      "place": 289,
+      "points": "1636.0000"
+    },
+    {
+      "id": 2632,
+      "name": "Midnight Sun CTF 2025 Quals",
+      "url": "https://ctftime.org/event/2632",
+      "ctf_url": "https://midnightsunctf.com/",
+      "format": "Jeopardy",
+      "location": "",
+      "start": "2025-05-17T12:00:00+00:00",
+      "finish": "2025-05-18T12:00:00+00:00",
+      "weight": 53,
+      "team_id": 383106,
+      "team_name": "Fondue Overflow",
+      "place": 201,
+      "points": "61.0000"
+    },
+    {
+      "id": 2787,
+      "name": "Cyshock - The Awakening",
+      "url": "https://ctftime.org/event/2787",
+      "ctf_url": "https://cyshock.ctfd.io/",
+      "format": "Jeopardy",
+      "location": "",
+      "start": "2025-05-14T08:00:00+00:00",
+      "finish": "2025-05-15T16:00:00+00:00",
+      "weight": 0,
+      "team_id": 383106,
+      "team_name": "Fondue Overflow",
+      "place": 241,
+      "points": "100.0000"
+    },
+    {
+      "id": 2585,
+      "name": "DamCTF 2025",
+      "url": "https://ctftime.org/event/2585",
+      "ctf_url": "https://damctf.xyz/",
+      "format": "Jeopardy",
+      "location": "",
+      "start": "2025-05-10T00:00:00+00:00",
+      "finish": "2025-05-12T00:00:00+00:00",
+      "weight": 60.67,
+      "team_id": 383106,
+      "team_name": "Fondue Overflow",
+      "place": 270,
+      "points": "100.0000"
+    },
+    {
+      "id": 2749,
+      "name": "Break the Syntax CTF 2025",
+      "url": "https://ctftime.org/event/2749",
+      "ctf_url": "https://bts2025.wh.edu.pl/",
+      "format": "Jeopardy",
+      "location": "",
+      "start": "2025-05-09T16:00:00+00:00",
+      "finish": "2025-05-11T10:00:00+00:00",
+      "weight": 42,
+      "team_id": 383106,
+      "team_name": "Fondue Overflow",
+      "place": 62,
+      "points": "1454.0000"
+    },
+    {
+      "id": 2759,
+      "name": "CTF@CIT 2025",
+      "url": "https://ctftime.org/event/2759",
+      "ctf_url": "https://ctf.cyber-cit.club/",
+      "format": "Jeopardy",
+      "location": "",
+      "start": "2025-04-25T21:00:00+00:00",
+      "finish": "2025-04-27T19:00:00+00:00",
+      "weight": 24.57,
+      "team_id": 382455,
+      "team_name": "FRHACK",
+      "place": 240,
+      "points": "7921.0000"
+    }
+  ]
+}
