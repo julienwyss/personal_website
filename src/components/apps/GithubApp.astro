@@ -1,6 +1,14 @@
 ---
 import githubData from '../../data/github.json';
 
+type GithubAccount = {
+  login: string;
+  html_url: string;
+  created_at: string;
+  public_repos: number;
+  followers: number;
+};
+
 type GithubProfile = {
   login: string;
   avatar_url: string;
@@ -17,10 +25,14 @@ type GithubRepo = {
   description?: string | null;
   language?: string | null;
   stargazers_count: number;
+  updated_at?: string;
+  account?: string;
+  accounts?: string[];
 };
 
 type GithubDataShape = {
   profile?: GithubProfile | null;
+  accounts?: GithubAccount[];
   repos?: GithubRepo[];
   languageBytes?: Record<string, number>;
   languageBytesTotal?: number;
@@ -29,13 +41,14 @@ type GithubDataShape = {
 const data = githubData as unknown as GithubDataShape;
 
 let profile: GithubProfile | null = data.profile ?? null;
+let accounts: GithubAccount[] = Array.isArray(data.accounts) ? data.accounts : [];
 let repos: GithubRepo[] | null = Array.isArray(data.repos) ? data.repos : null;
 let apiError: string | null = null;
 let languageStats: Record<string, number> = {};
 let sortedLanguages: [string, number][] = [];
-let joinedYear: number | null = null;
 let languageBytesTotal: number | null = typeof data.languageBytesTotal === 'number' ? data.languageBytesTotal : null;
 let usingLanguageBytes = false;
+let totalRepos = 0;
 
 try {
   if (!profile || !repos) {
@@ -54,17 +67,21 @@ try {
     sortedLanguages = Object.entries(languageStats).sort((a, b) => b[1] - a[1]);
   }
 
-  joinedYear = new Date(profile.created_at).getFullYear();
+  totalRepos = repos.length;
 } catch (error) {
   apiError = (error as Error).message;
   console.error('GitHub Data Error:', error);
 }
+
+const accountColors: Record<string, string> = {
+  [accounts[0]?.login ?? '']: 'text-cyan-400 border-cyan-800 bg-cyan-950',
+  [accounts[1]?.login ?? '']: 'text-violet-400 border-violet-800 bg-violet-950',
+};
 ---
 
 <div class="h-full overflow-y-auto bg-zinc-900 text-zinc-200 p-6">
 
 {(apiError || !profile || !repos) ? (
-  <!-- Error State -->
   <div class="h-full flex items-center justify-center">
     <div class="text-center">
       <div class="text-6xl mb-4">
@@ -84,68 +101,97 @@ try {
   </div>
 ) : (
   <>
-  <!-- Header -->
   <div class="flex items-center gap-6">
     <img
       src={profile.avatar_url}
-      class="w-24 h-24 rounded-full border border-zinc-700"
+      class="w-20 h-20 rounded-full border border-zinc-700 shrink-0"
     />
 
-    <div>
-      <h2 class="text-xl font-bold">{profile.login}</h2>
-      <p class="text-zinc-400 text-sm">
-        Member since {joinedYear}
-      </p>
-
-      <a
-        href={profile.html_url}
-        target="_blank"
-        class="text-cyan-400 text-sm hover:underline"
-      >
-        Open on GitHub →
-      </a>
+    <div class="flex flex-col gap-2">
+      {accounts.length > 0 ? accounts.map((acc) => (
+        <div class="flex items-center gap-3">
+          <span
+            class={`text-xs px-2 py-0.5 rounded border font-mono ${accountColors[acc.login] ?? 'text-zinc-400 border-zinc-700 bg-zinc-800'}`}
+          >
+            {acc.login}
+          </span>
+          <a
+            href={acc.html_url}
+            target="_blank"
+            class="text-zinc-400 text-sm hover:text-zinc-200 hover:underline transition-colors"
+          >
+            Open on GitHub →
+          </a>
+        </div>
+      )) : (
+        <div class="flex items-center gap-3">
+          <a
+            href={profile.html_url}
+            target="_blank"
+            class="text-cyan-400 text-sm hover:underline"
+          >
+            {profile.login} – Open on GitHub →
+          </a>
+        </div>
+      )}
     </div>
   </div>
 
-  <!-- Stats -->
   <div class="mt-6 flex gap-8 text-sm">
     <div>
       <span class="text-zinc-400">Repos</span>
-      <div class="text-lg font-semibold">{profile.public_repos}</div>
+      <div class="text-lg font-semibold">{totalRepos}</div>
     </div>
+    {accounts.map((acc) => (
+      <div>
+        <span class={`text-xs ${accountColors[acc.login]?.split(' ')[0] ?? 'text-zinc-400'}`}>{acc.login}</span>
+        <div class="text-lg font-semibold">{acc.public_repos}</div>
+      </div>
+    ))}
   </div>
 
-  <!-- Repositories -->
   <div class="mt-10">
     <h3 class="text-sm uppercase text-zinc-500 tracking-wider mb-4">
       Repositories
     </h3>
 
-    {repos.map((repo: any) => (
-      <div class="mb-5 pb-4 border-b border-zinc-800">
-        <a
-          href={repo.html_url}
-          target="_blank"
-          class="text-cyan-400 font-semibold text-base"
-        >
-          {repo.name}
-        </a>
+    {repos.map((repo: GithubRepo) => {
+      const repoAccounts: string[] = (repo as any).accounts ?? (repo.account ? [repo.account] : []);
+      return (
+        <div class="mb-5 pb-4 border-b border-zinc-800">
+          <div class="flex items-center justify-between gap-2">
+            <a
+              href={repo.html_url}
+              target="_blank"
+              class="text-cyan-400 font-semibold text-base hover:underline"
+            >
+              {repo.name}
+            </a>
+            <div class="flex gap-1 shrink-0">
+              {repoAccounts.map((acc) => (
+                <span
+                  class={`text-xs px-1.5 py-0.5 rounded border font-mono ${accountColors[acc] ?? 'text-zinc-400 border-zinc-700 bg-zinc-800'}`}
+                >
+                  {acc}
+                </span>
+              ))}
+            </div>
+          </div>
 
-        {repo.description && (
-          <p class="text-sm text-zinc-400 mt-1">
-            {repo.description}
-          </p>
-        )}
+          {repo.description && (
+            <p class="text-sm text-zinc-400 mt-1">
+              {repo.description}
+            </p>
+          )}
 
-        <div class="flex gap-6 text-xs text-zinc-500 mt-2">
-          {repo.language && <span>{repo.language}</span>}
-          <span>★ {repo.stargazers_count}</span>
+          <div class="flex gap-6 text-xs text-zinc-500 mt-2">
+            {repo.language && <span>{repo.language}</span>}
+          </div>
         </div>
-      </div>
-    ))}
+      );
+    })}
   </div>
 
-  <!-- Language Statistik -->
   {sortedLanguages.length > 0 && (
     <div class="mt-10">
       <h3 class="text-sm uppercase text-zinc-500 tracking-wider mb-4">
@@ -154,7 +200,7 @@ try {
 
       <div class="space-y-3">
         {sortedLanguages.map(([lang, count]: [string, number]) => {
-          const denom = usingLanguageBytes ? (languageBytesTotal ?? 0) : repos.length;
+          const denom = usingLanguageBytes ? (languageBytesTotal ?? 0) : repos!.length;
           const percent = denom > 0 ? (count / denom) * 100 : 0;
 
           return (

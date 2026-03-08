@@ -1,11 +1,18 @@
 import fs from 'fs';
 import path from 'path';
 
-const username = "julienwyss";
+const ACCOUNTS = ["julienwyss", "the-redalchemist"];
 const OUTPUT_FILE = path.join(process.cwd(), 'src/data/github.json');
 
 type GithubRepo = {
+  name: string;
+  html_url: string;
+  description?: string | null;
+  language?: string | null;
+  stargazers_count: number;
+  updated_at?: string;
   languages_url?: string;
+  owner?: { login: string };
 };
 
 function githubHeaders() {
@@ -52,21 +59,62 @@ async function aggregateLanguagesByBytes(repos: GithubRepo[]) {
 
 async function fetchGithubData() {
   try {
-    const profile = await githubFetchJson<any>(`https://api.github.com/users/${username}`);
-    const repos = await githubFetchJson<any[]>(`https://api.github.com/users/${username}/repos?sort=updated&per_page=100`);
+    const accountData: Array<{ username: string; profile: any; repos: any[] }> = [];
 
-    const { totals: languageBytes, totalBytes: languageBytesTotal } = await aggregateLanguagesByBytes(repos);
+    for (const username of ACCOUNTS) {
+      console.log(`Fetching data for ${username}...`);
+      const profile = await githubFetchJson<any>(`https://api.github.com/users/${username}`);
+      const repos = await githubFetchJson<any[]>(`https://api.github.com/users/${username}/repos?sort=updated&per_page=100`);
+      accountData.push({ username, profile, repos });
+    }
+
+    const reposByName = new Map<string, GithubRepo & { account: string }>();
+    for (const { username, repos } of accountData) {
+      for (const repo of repos) {
+        const key = repo.name.toLowerCase();
+        if (!reposByName.has(key)) {
+          reposByName.set(key, { ...repo, account: username });
+        } else {
+          const existing = reposByName.get(key)!;
+          if (!(existing as any).accounts) {
+            (existing as any).accounts = [(existing as any).account, username];
+          } else if (!(existing as any).accounts.includes(username)) {
+            (existing as any).accounts.push(username);
+          }
+        }
+      }
+    }
+
+    const mergedRepos = Array.from(reposByName.values())
+      .sort((a, b) => {
+        const dateA = a.updated_at ? new Date(a.updated_at).getTime() : 0;
+        const dateB = b.updated_at ? new Date(b.updated_at).getTime() : 0;
+        return dateB - dateA;
+      });
+
+    const { totals: languageBytes, totalBytes: languageBytesTotal } = await aggregateLanguagesByBytes(mergedRepos);
+
+    const primaryProfile = accountData[0].profile;
+    const accounts = accountData.map(({ username, profile }) => ({
+      login: profile.login,
+      html_url: profile.html_url,
+      created_at: profile.created_at,
+      public_repos: profile.public_repos,
+      followers: profile.followers,
+    }));
 
     const data = {
       generatedAt: new Date().toISOString(),
-      profile,
-      repos,
+      profile: primaryProfile,
+      accounts,
+      repos: mergedRepos,
       languageBytes,
       languageBytesTotal
     };
+
     fs.mkdirSync(path.dirname(OUTPUT_FILE), { recursive: true });
     fs.writeFileSync(OUTPUT_FILE, JSON.stringify(data, null, 2));
-    console.log("GitHub data generated.");
+    console.log(`GitHub data generated. ${mergedRepos.length} repos merged from ${ACCOUNTS.length} accounts.`);
   } catch (error) {
     console.error("Failed to fetch GitHub data:", error);
   }
