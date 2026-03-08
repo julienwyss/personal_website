@@ -2,6 +2,9 @@ import fs from 'fs';
 import path from 'path';
 
 const ACCOUNTS = ["julienwyss", "the-redalchemist"];
+const COLLAB_REPOS = [
+  { owner: "mocatex", repo: "vault-guard" },
+];
 const OUTPUT_FILE = path.join(process.cwd(), 'src/data/github.json');
 
 type GithubRepo = {
@@ -94,6 +97,17 @@ async function fetchGithubData() {
 
     const { totals: languageBytes, totalBytes: languageBytesTotal } = await aggregateLanguagesByBytes(mergedRepos);
 
+    const collabRepos: any[] = [];
+    for (const { owner, repo } of COLLAB_REPOS) {
+      try {
+        const repoData = await githubFetchJson<any>(`https://api.github.com/repos/${owner}/${repo}`);
+        collabRepos.push({ ...repoData, type: 'collab' });
+        console.log(`Fetched collab repo: ${owner}/${repo}`);
+      } catch (e) {
+        console.warn(`Could not fetch collab repo ${owner}/${repo}:`, e);
+      }
+    }
+
     const primaryProfile = accountData[0].profile;
     const accounts = accountData.map(({ username, profile }) => ({
       login: profile.login,
@@ -108,6 +122,7 @@ async function fetchGithubData() {
       profile: primaryProfile,
       accounts,
       repos: mergedRepos,
+      collabRepos,
       languageBytes,
       languageBytesTotal
     };

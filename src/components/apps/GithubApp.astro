@@ -34,6 +34,7 @@ type GithubDataShape = {
   profile?: GithubProfile | null;
   accounts?: GithubAccount[];
   repos?: GithubRepo[];
+  collabRepos?: GithubRepo[];
   languageBytes?: Record<string, number>;
   languageBytesTotal?: number;
 };
@@ -43,6 +44,7 @@ const data = githubData as unknown as GithubDataShape;
 let profile: GithubProfile | null = data.profile ?? null;
 let accounts: GithubAccount[] = Array.isArray(data.accounts) ? data.accounts : [];
 let repos: GithubRepo[] | null = Array.isArray(data.repos) ? data.repos : null;
+let collabRepos: GithubRepo[] = Array.isArray(data.collabRepos) ? data.collabRepos : [];
 let apiError: string | null = null;
 let languageStats: Record<string, number> = {};
 let sortedLanguages: [string, number][] = [];
@@ -191,6 +193,41 @@ const accountColors: Record<string, string> = {
       );
     })}
   </div>
+
+  {collabRepos.length > 0 && (
+    <div class="mt-10">
+      <h3 class="text-sm uppercase text-zinc-500 tracking-wider mb-4">
+        Collaborative Projects
+      </h3>
+
+      {collabRepos.map((repo: GithubRepo) => (
+        <div class="mb-5 pb-4 border-b border-zinc-800">
+          <div class="flex items-center justify-between gap-2">
+            <a
+              href={repo.html_url}
+              target="_blank"
+              class="text-cyan-400 font-semibold text-base hover:underline"
+            >
+              {repo.name}
+            </a>
+            <span class="text-xs px-1.5 py-0.5 rounded border font-mono text-amber-400 border-amber-800 bg-amber-950 shrink-0">
+              {(repo as any).owner?.login ?? 'collab'}
+            </span>
+          </div>
+
+          {repo.description && (
+            <p class="text-sm text-zinc-400 mt-1">
+              {repo.description}
+            </p>
+          )}
+
+          <div class="flex gap-6 text-xs text-zinc-500 mt-2">
+            {repo.language && <span>{repo.language}</span>}
+          </div>
+        </div>
+      ))}
+    </div>
+  )}
 
   {sortedLanguages.length > 0 && (
     <div class="mt-10">
