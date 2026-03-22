@@ -10,8 +10,8 @@ import "../styles/global.css";
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content" />
     <meta http-equiv="Content-Security-Policy" content="
       default-src 'self';
-      script-src 'self' 'unsafe-inline';
-      connect-src 'self' api.web3forms.com;
+      script-src 'self' 'unsafe-inline' cloud.umami.is;
+      connect-src 'self' api.web3forms.com cloud.umami.is api-gateway.umami.dev;
       img-src 'self' data: https:;
       style-src 'self' 'unsafe-inline' fonts.googleapis.com;
       font-src 'self' data: fonts.gstatic.com;
@@ -45,6 +45,7 @@ import "../styles/global.css";
       ]
     }
     </script>
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="d2cc386b-5c46-41cc-87d9-a416c9b3843d"></script>
   </head>
   <body>
     <h1 class="sr-only">Julien Wyss - Cybersecurity and Software Engineering Portfolio</h1>

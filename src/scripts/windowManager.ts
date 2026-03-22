@@ -76,6 +76,10 @@ const apps: Record<AppId, () => HTMLElement> = {
   const app = apps[appId];
   if (!app) return;
 
+  if (typeof (window as any).umami !== 'undefined') {
+    (window as any).umami.track('App Opened', { appName: appId });
+  }
+
   const win = app();
   if (!win) return;
 
